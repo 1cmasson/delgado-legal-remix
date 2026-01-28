@@ -2,6 +2,7 @@
   "name": "delgado-legal-remix",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.20.0",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",

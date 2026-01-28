@@ -15,16 +15,16 @@ A modern, accessible, and internationalized legal services website scaffold buil
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm dev
 
 # Build for production
-npm run build
+pnpm build
 
 # Start production server
-npm start
+pnpm start
 ```
 
 ## Project Structure
@@ -164,7 +164,7 @@ Effects automatically respect `prefers-reduced-motion` media query.
 ## Adding shadcn Components
 
 ```bash
-npx shadcn@latest add [component-name]
+pnpm dlx shadcn@latest add [component-name]
 ```
 
 Available components: https://ui.shadcn.com/docs/components
@@ -184,10 +184,10 @@ Available components: https://ui.shadcn.com/docs/components
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm start` | Start production server |
-| `npm run typecheck` | Run TypeScript checks |
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build for production |
+| `pnpm start` | Start production server |
+| `pnpm typecheck` | Run TypeScript checks |
 
 ## Deployment
 
@@ -200,7 +200,7 @@ docker run -p 3000:3000 delgado-legal
 
 ### DIY Deployment
 
-Deploy the output of `npm run build`:
+Deploy the output of `pnpm build`:
 
 ```
 ├── package.json

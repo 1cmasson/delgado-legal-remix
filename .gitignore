@@ -5,3 +5,6 @@
 # React Router
 /.react-router/
 /build/
+
+# npm (use pnpm instead)
+package-lock.json
