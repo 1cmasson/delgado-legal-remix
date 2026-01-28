@@ -1,0 +1,7 @@
+[build]
+  command = "pnpm build"
+  publish = "build/client"
+
+[build.environment]
+  NODE_VERSION = "20"
+  COREPACK_ENABLE_DOWNLOAD_PROMPT = "0"

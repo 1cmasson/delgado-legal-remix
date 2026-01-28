@@ -8,3 +8,6 @@
 
 # npm (use pnpm instead)
 package-lock.json
+
+# Netlify
+.netlify/
