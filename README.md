@@ -1,87 +1,234 @@
-# Welcome to React Router!
+# Delgado Legal - React Router (Remix) Scaffold
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A modern, accessible, and internationalized legal services website scaffold built with React Router (Remix), shadcn/ui, and Tailwind CSS.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 🎨 **Centralized Design System** - Consistent theming with CSS custom properties
+- 🌐 **Internationalization (i18n)** - English/Spanish support with language switcher
+- ❄️ **Holiday Theme Provider** - Automatic seasonal effects (snow in December, etc.)
+- ♿ **Accessible** - ARIA-compliant components, skip links, keyboard navigation
+- 📱 **Responsive** - Mobile-first design with touch-friendly interactions
+- ⚡ **Modern Stack** - React Router v7, TypeScript, Vite, Tailwind v4
 
-## Getting Started
-
-### Installation
-
-Install the dependencies:
+## Quick Start
 
 ```bash
+# Install dependencies
 npm install
-```
 
-### Development
-
-Start the development server with HMR:
-
-```bash
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Your application will be available at `http://localhost:5173`.
+## Project Structure
 
-## Building for Production
+```
+app/
+├── components/
+│   ├── ui/              # shadcn/ui components
+│   ├── shared/          # Custom shared components
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Section.tsx
+│   │   ├── Typography.tsx
+│   │   └── LanguageSwitcher.tsx
+│   └── effects/         # Visual effects
+│       └── SnowParticles.tsx
+├── hooks/
+│   ├── useHolidayTheme.ts
+│   └── useMediaQuery.ts
+├── lib/
+│   ├── theme.ts         # Design tokens
+│   ├── holidays.ts      # Holiday configurations
+│   └── utils.ts         # Utility functions
+├── providers/
+│   └── ThemeProvider.tsx
+├── routes/
+│   ├── home.tsx         # / - Homepage
+│   ├── about.tsx        # /about - About page
+│   ├── practices.tsx    # /practices - Practice areas
+│   ├── testimonials.tsx # /testimonials - Client testimonials
+│   ├── faq.tsx          # /faq - FAQ page
+│   └── contact.tsx      # /contact - Contact form
+├── app.css              # Global styles & theme variables
+├── root.tsx             # Root layout
+└── routes.ts            # Route configuration
+```
 
-Create a production build:
+## Theming
+
+### Brand Colors
+
+The theme uses CSS custom properties for easy customization:
+
+```css
+:root {
+  --brand-navy: #033A5B;    /* Primary background */
+  --brand-gold: #E4BE72;    /* Accent/hover color */
+  --brand-gray: #8B8B8B;    /* Text secondary */
+}
+```
+
+### Modifying Theme
+
+1. Edit CSS variables in `app/app.css`
+2. For semantic tokens, modify the `:root` section
+3. Design tokens are also available in `app/lib/theme.ts`
+
+## Components
+
+### Section Component
+
+Wrapper for page sections with consistent padding:
+
+```tsx
+<Section size="lg" background="muted">
+  {/* content */}
+</Section>
+```
+
+### Hero Component
+
+Full-width hero section:
+
+```tsx
+<Hero
+  title="Your Title"
+  subtitle="Subtitle"
+  description="Description text"
+  primaryCta={{ label: "CTA", href: "/contact" }}
+/>
+```
+
+### Typography Components
+
+```tsx
+<Heading as="h1" size="hero">Main Title</Heading>
+<Text size="lg" muted>Paragraph text</Text>
+```
+
+## Internationalization
+
+### Translation Files
+
+Located in `public/locales/{lang}/common.json`:
+
+- `public/locales/en/common.json` - English
+- `public/locales/es/common.json` - Spanish
+
+### Language Switcher
+
+The floating language switcher (bottom-right) persists selection in localStorage.
+
+### Adding Languages
+
+1. Create new folder in `public/locales/{lang}/`
+2. Copy and translate `common.json`
+3. Add language to `LanguageSwitcher.tsx` languages array
+
+## Holiday Theme
+
+### Configuration
+
+Edit `app/lib/holidays.ts` to add/modify holidays:
+
+```typescript
+{
+  name: 'christmas',
+  startDate: { month: 12, day: 1 },
+  endDate: { month: 12, day: 31 },
+  effect: 'snow',
+  accentColor: '#c41e3a',
+}
+```
+
+### Supported Effects
+
+- `snow` - Falling snowflakes (December)
+- `hearts` - Floating hearts (Valentine's)
+- `fireworks` - Firework bursts (4th of July)
+- `confetti` - Confetti shower (New Year)
+
+### Respecting User Preferences
+
+Effects automatically respect `prefers-reduced-motion` media query.
+
+## Adding shadcn Components
 
 ```bash
-npm run build
+npx shadcn@latest add [component-name]
 ```
+
+Available components: https://ui.shadcn.com/docs/components
+
+## Accessibility
+
+### Features Included
+
+- Skip-to-content link
+- ARIA labels on navigation
+- Semantic HTML structure
+- Keyboard-navigable components
+- Focus indicators
+- Color contrast compliance
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm start` | Start production server |
+| `npm run typecheck` | Run TypeScript checks |
 
 ## Deployment
 
 ### Docker Deployment
 
-To build and run using Docker:
-
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+docker build -t delgado-legal .
+docker run -p 3000:3000 delgado-legal
 ```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
 
 ### DIY Deployment
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+Deploy the output of `npm run build`:
 
 ```
 ├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
 ├── build/
 │   ├── client/    # Static assets
 │   └── server/    # Server-side code
 ```
 
-## Styling
+## Customization Checklist
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+- [ ] Replace placeholder logo images in `public/images/logos/`
+- [ ] Update contact information in Footer and Contact page
+- [ ] Customize practice areas content
+- [ ] Add team member photos and bios
+- [ ] Update testimonials with real client quotes
+- [ ] Configure Google Maps embed on Contact page
+- [ ] Set up form submission handling
+- [ ] Update meta descriptions for SEO
+
+## Tech Stack
+
+- **Framework**: React Router v7 (Remix)
+- **Styling**: Tailwind CSS v4
+- **UI Components**: shadcn/ui
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **Runtime**: Node.js
 
 ---
 
-Built with ❤️ using React Router.
+Built with ❤️ for Delgado Legal.

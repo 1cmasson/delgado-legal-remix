@@ -10,6 +10,11 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+import { ThemeProvider, useTheme } from "~/providers/ThemeProvider";
+import { Header } from "~/components/shared/Header";
+import { LanguageSwitcher } from "~/components/shared/LanguageSwitcher";
+import { SnowParticles } from "~/components/effects/SnowParticles";
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -29,6 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Delgado Legal - Trusted legal representation for immigration, family law, criminal defense, and personal injury cases." />
         <Meta />
         <Links />
       </head>
@@ -41,8 +47,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+function AppContent() {
+  const { effect } = useTheme();
+  
+  return (
+    <>
+      {effect === 'snow' && <SnowParticles count={40} />}
+      <Header />
+      <main id="main-content">
+        <Outlet />
+      </main>
+      <LanguageSwitcher />
+    </>
+  );
+}
+
 export default function App() {
-  return <Outlet />;
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

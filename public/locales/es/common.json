@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Nosotros",
+    "practices": "Áreas de Práctica",
+    "testimonials": "Testimonios",
+    "faq": "Preguntas Frecuentes",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "subtitle": "Representación Legal de Confianza",
+    "title": "Luchando por Sus Derechos con Dedicación e Integridad",
+    "description": "Nuestros abogados experimentados están comprometidos a proporcionar soluciones legales personalizadas para casos de inmigración, derecho familiar, defensa criminal y lesiones personales.",
+    "cta": {
+      "primary": "Consulta Gratuita",
+      "secondary": "Más Información"
+    }
+  },
+  "about": {
+    "title": "Sobre Nuestra Firma",
+    "subtitle": "Su Socio Legal de Confianza",
+    "description": "Con décadas de experiencia combinada, nuestro equipo de abogados dedicados está comprometido a lograr los mejores resultados posibles para nuestros clientes.",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Proporcionar servicios legales excepcionales con integridad, compasión y compromiso inquebrantable con el éxito de nuestros clientes."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "integrity": "Integridad",
+      "excellence": "Excelencia",
+      "compassion": "Compasión",
+      "dedication": "Dedicación"
+    }
+  },
+  "practices": {
+    "title": "Áreas de Práctica",
+    "subtitle": "Servicios Legales Integrales",
+    "description": "Ofrecemos representación legal experta en múltiples áreas de práctica para satisfacer sus diversas necesidades.",
+    "areas": {
+      "immigration": {
+        "title": "Ley de Inmigración",
+        "description": "Navegue el complejo sistema de inmigración con orientación experimentada."
+      },
+      "family": {
+        "title": "Derecho Familiar",
+        "description": "Proteja los intereses de su familia con apoyo legal compasivo."
+      },
+      "criminal": {
+        "title": "Defensa Criminal",
+        "description": "Defienda sus derechos con representación agresiva y estratégica."
+      },
+      "injury": {
+        "title": "Lesiones Personales",
+        "description": "Obtenga la compensación que merece por sus lesiones."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Testimonios de Clientes",
+    "subtitle": "Lo Que Dicen Nuestros Clientes",
+    "description": "Escuche a las personas que hemos ayudado a navegar sus desafíos legales."
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Preguntas Comunes",
+    "description": "Encuentre respuestas a las preguntas más frecuentes sobre nuestros servicios.",
+    "items": {
+      "consultation": {
+        "question": "¿Cómo programo una consulta?",
+        "answer": "Puede programar una consulta gratuita llamando a nuestra oficina o completando el formulario de contacto en nuestro sitio web."
+      },
+      "fees": {
+        "question": "¿Cuáles son sus honorarios?",
+        "answer": "Nuestros honorarios varían según el tipo de caso. Ofrecemos consultas iniciales gratuitas para discutir su situación y proporcionar precios transparentes."
+      },
+      "timeline": {
+        "question": "¿Cuánto tiempo tomará mi caso?",
+        "answer": "Los plazos de los casos varían según la complejidad. Durante su consulta, proporcionaremos un cronograma estimado basado en su situación específica."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contáctenos",
+    "subtitle": "Póngase en Contacto",
+    "description": "¿Listo para discutir su caso? Contáctenos hoy para una consulta gratuita.",
+    "form": {
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "phone": "Número de Teléfono",
+      "message": "Su Mensaje",
+      "submit": "Enviar Mensaje"
+    },
+    "info": {
+      "phone": "Teléfono",
+      "email": "Correo",
+      "address": "Dirección",
+      "hours": "Horario de Oficina"
+    }
+  },
+  "footer": {
+    "tagline": "Dedicados a proporcionar servicios legales excepcionales con integridad, compasión y compromiso con nuestros clientes.",
+    "services": "Áreas de Práctica",
+    "company": "Empresa",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "copyright": "© {year} Delgado Legal. Todos los derechos reservados."
+  },
+  "common": {
+    "learnMore": "Más Información",
+    "readMore": "Leer Más",
+    "viewAll": "Ver Todo",
+    "back": "Volver",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error"
+  },
+  "home": {
+    "metaDescription": "DELGADO LEGAL, P.A. es un bufete de abogados de servicio completo y agente de títulos con licencia en Miami Lakes, FL. Cierres de bienes raíces, planificación patrimonial, defensa de ejecución hipotecaria y más.",
+    "heroDescription": "DELGADO LEGAL, P.A. es un bufete de abogados de servicio completo y agente de títulos con licencia que ofrece cierres de bienes raíces expertos, planificación patrimonial y una variedad de servicios legales en todo el sur de Florida.",
+    "realEstateClosings": {
+      "title": "Cierres de Bienes Raíces",
+      "description": "Transacciones inmobiliarias fluidas de principio a fin. Servicios de agente de títulos con licencia para compradores, vendedores y agentes."
+    }
+  }
+}

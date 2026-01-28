@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Our Firm",
+    "practices": "Practice Areas",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Trusted Legal Representation",
+    "title": "Fighting for Your Rights with Dedication and Integrity",
+    "description": "Our experienced attorneys are committed to providing personalized legal solutions for immigration, family law, criminal defense, and personal injury cases.",
+    "cta": {
+      "primary": "Free Consultation",
+      "secondary": "Learn More"
+    }
+  },
+  "about": {
+    "title": "About Our Firm",
+    "subtitle": "Your Trusted Legal Partner",
+    "description": "With decades of combined experience, our team of dedicated attorneys is committed to achieving the best possible outcomes for our clients.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To provide exceptional legal services with integrity, compassion, and unwavering commitment to our clients' success."
+    },
+    "values": {
+      "title": "Our Values",
+      "integrity": "Integrity",
+      "excellence": "Excellence",
+      "compassion": "Compassion",
+      "dedication": "Dedication"
+    }
+  },
+  "practices": {
+    "title": "Practice Areas",
+    "subtitle": "Comprehensive Legal Services",
+    "description": "We offer expert legal representation across multiple practice areas to meet your diverse needs.",
+    "areas": {
+      "immigration": {
+        "title": "Immigration Law",
+        "description": "Navigate the complex immigration system with experienced guidance."
+      },
+      "family": {
+        "title": "Family Law",
+        "description": "Protect your family's interests with compassionate legal support."
+      },
+      "criminal": {
+        "title": "Criminal Defense",
+        "description": "Defend your rights with aggressive and strategic representation."
+      },
+      "injury": {
+        "title": "Personal Injury",
+        "description": "Get the compensation you deserve for your injuries."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "subtitle": "What Our Clients Say",
+    "description": "Hear from the people we've helped navigate their legal challenges."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Common Questions",
+    "description": "Find answers to commonly asked questions about our services.",
+    "items": {
+      "consultation": {
+        "question": "How do I schedule a consultation?",
+        "answer": "You can schedule a free consultation by calling our office or filling out the contact form on our website."
+      },
+      "fees": {
+        "question": "What are your fees?",
+        "answer": "Our fees vary depending on the type of case. We offer free initial consultations to discuss your situation and provide transparent pricing."
+      },
+      "timeline": {
+        "question": "How long will my case take?",
+        "answer": "Case timelines vary depending on complexity. During your consultation, we'll provide an estimated timeline based on your specific situation."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in Touch",
+    "description": "Ready to discuss your case? Contact us today for a free consultation.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Your Message",
+      "submit": "Send Message"
+    },
+    "info": {
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "hours": "Office Hours"
+    }
+  },
+  "footer": {
+    "tagline": "Dedicated to providing exceptional legal services with integrity, compassion, and commitment to our clients.",
+    "services": "Practice Areas",
+    "company": "Company",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© {year} Delgado Legal. All rights reserved."
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "back": "Back",
+    "loading": "Loading...",
+    "error": "An error occurred"
+  },
+  "home": {
+    "metaDescription": "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more.",
+    "heroDescription": "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent providing expert real estate closings, estate planning, and a variety of legal services throughout South Florida.",
+    "realEstateClosings": {
+      "title": "Real Estate Closings",
+      "description": "Smooth real estate transactions from start to finish. Licensed title agent services for buyers, sellers, and agents."
+    }
+  }
+}
