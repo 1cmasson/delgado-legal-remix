@@ -141,21 +141,13 @@ body {
   }
 }
 
-/* Scroll Snap Styles */
+/* Scroll Container Styles */
 .scroll-snap-container {
-  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 
-.scroll-section {
-  scroll-snap-align: start;
-}
-
-/* Disable scroll snap on mobile for better UX */
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .scroll-snap-container {
-    scroll-snap-type: none;
-  }
   .scroll-section {
     min-height: auto;
     padding-top: 4rem;
