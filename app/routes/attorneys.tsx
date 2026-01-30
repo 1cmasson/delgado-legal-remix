@@ -5,6 +5,7 @@ import { DecorativeElement, Scales, Column, Document, Lines, GoldRing, ArtDecoCo
 import { Heading, Text } from "~/components/shared/Typography";
 import { Button } from "~/components/ui/button";
 import { Link } from "react-router";
+import { useTranslation } from "~/providers/TranslationProvider";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -15,32 +16,21 @@ export function meta({}: Route.MetaArgs) {
 
 const attorneys = {
   vanessa: {
-    name: "Vanessa Delgado",
-    role: "Attorney / Partner",
     image: "/images/team/vanessa.webp",
     education: "Florida International University College of Law",
     graduationYear: "2008",
     experience: "16+",
-    specializations: [
-      "Real Estate Litigation",
-      "Real Estate Transactions",
-      "Landlord/Tenant Disputes",
-      "Estate Planning",
-    ],
-    bio: "With over 16 years of dedicated legal practice, Vanessa Delgado brings comprehensive expertise to every client engagement. Her depth of knowledge in real estate litigation and transactions, combined with her proficiency in estate planning, enables her to provide tailored legal solutions that address the full spectrum of her clients' needs.",
+    specializationKeys: ["realEstateLitigation", "realEstateTransactions", "landlordTenant", "estatePlanning"],
     linkedin: "https://www.linkedin.com/in/vanessa-delgado-a4b090a/",
   },
   michael: {
-    name: "Michael Delgado",
-    role: "Attorney / Partner",
     image: "/images/team/michael.webp",
     education: "St. Thomas University School of Law",
     graduationYear: "2008",
     experience: "16+",
     recognition: "Rising Star 2022",
     recognitionUrl: "https://profiles.superlawyers.com/florida/hialeah/lawyer/michael-delgado/fc4bc44e-6b76-4b98-b79a-f6668d618255.html",
-    specializations: ["Real Estate Consumer Matters"],
-    bio: "Michael Delgado has established himself as a distinguished attorney in real estate consumer matters, earning recognition as a Rising Star in 2022. His commitment to exceptional client representation and his thorough understanding of real estate law make him a trusted advocate for clients throughout the Hialeah and greater Miami area.",
+    specializationKeys: ["realEstateConsumer"],
     linkedin: "https://www.linkedin.com/in/michael-delgado-b9728927/",
   },
 };
@@ -58,7 +48,7 @@ function AttorneyImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-function LinkedInLink({ href }: { href: string }) {
+function LinkedInLink({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
@@ -73,7 +63,7 @@ function LinkedInLink({ href }: { href: string }) {
           clipRule="evenodd"
         />
       </svg>
-      LinkedIn Profile
+      {label}
     </a>
   );
 }
@@ -87,15 +77,17 @@ function SpecializationBadge({ children }: { children: React.ReactNode }) {
 }
 
 export default function Attorneys() {
+  const { t } = useTranslation();
+
   return (
     <ScrollSnapContainer>
       {/* Hero Section */}
-      <ScrollSection className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <DecorativeElement position="top-left" opacity={0.60}>
           <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={280} color="var(--brand-navy)" />
+          <Scales size={200} color="var(--brand-navy)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.25}>
           <Lines size={200} variant="diagonal" color="var(--brand-gold)" />
@@ -107,19 +99,19 @@ export default function Attorneys() {
         <div className="max-w-4xl mx-auto text-center">
           <SlideUpOnScroll>
             <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              Meet Our Team
+              {t('attorneys.hero.subtitle')}
             </Text>
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={100}>
             <Heading as="h1" size="xl" className="mb-6">
-              Our Attorneys
+              {t('attorneys.hero.title')}
             </Heading>
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={200}>
             <Text size="lg" muted className="max-w-2xl mx-auto">
-              Experienced legal professionals dedicated to protecting your interests and achieving the best possible outcomes for your case.
+              {t('attorneys.hero.description')}
             </Text>
           </SlideUpOnScroll>
         </div>
@@ -131,7 +123,7 @@ export default function Attorneys() {
           <ArtDecoCorner size={80} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="center-right" opacity={0.25}>
-          <Document size={250} color="var(--brand-navy)" />
+          <Document size={175} color="var(--brand-navy)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-right" opacity={0.55}>
           <ArtDecoCorner size={80} corner="bottom-right" color="var(--brand-gold)" />
@@ -140,49 +132,49 @@ export default function Attorneys() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <SlideUpOnScroll>
-              <AttorneyImage src={attorneys.vanessa.image} alt={attorneys.vanessa.name} />
+              <AttorneyImage src={attorneys.vanessa.image} alt={t('attorneys.vanessa.name')} />
             </SlideUpOnScroll>
 
             <div>
               <SlideUpOnScroll delay={100}>
                 <Heading as="h2" size="lg" className="mb-2">
-                  {attorneys.vanessa.name}
+                  {t('attorneys.vanessa.name')}
                 </Heading>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={150}>
-                <Text className="text-accent font-medium mb-4">{attorneys.vanessa.role}</Text>
+                <Text className="text-accent font-medium mb-4">{t('attorneys.vanessa.role')}</Text>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={200}>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {attorneys.vanessa.specializations.map((spec) => (
-                    <SpecializationBadge key={spec}>{spec}</SpecializationBadge>
+                  {attorneys.vanessa.specializationKeys.map((key) => (
+                    <SpecializationBadge key={key}>{t(`attorneys.vanessa.specializations.${key}`)}</SpecializationBadge>
                   ))}
                 </div>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={250}>
                 <Text muted className="mb-6">
-                  {attorneys.vanessa.bio}
+                  {t('attorneys.vanessa.bio')}
                 </Text>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={300}>
                 <div className="space-y-2 mb-6">
                   <Text size="sm" className="flex items-center gap-2">
-                    <span className="text-accent">Education:</span>
+                    <span className="text-accent">{t('attorneys.labels.education')}:</span>
                     {attorneys.vanessa.education} ({attorneys.vanessa.graduationYear})
                   </Text>
                   <Text size="sm" className="flex items-center gap-2">
-                    <span className="text-accent">Experience:</span>
-                    {attorneys.vanessa.experience} Years
+                    <span className="text-accent">{t('attorneys.labels.experience')}:</span>
+                    {attorneys.vanessa.experience} {t('attorneys.labels.years')}
                   </Text>
                 </div>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={350}>
-                <LinkedInLink href={attorneys.vanessa.linkedin} />
+                <LinkedInLink href={attorneys.vanessa.linkedin} label={t('attorneys.labels.linkedIn')} />
               </SlideUpOnScroll>
             </div>
           </div>
@@ -192,7 +184,7 @@ export default function Attorneys() {
       {/* Michael Delgado Section */}
       <ScrollSection background="muted" id="michael">
         <DecorativeElement position="top-left" opacity={0.25} className="animate-float">
-          <Column size={220} color="var(--brand-gold)" />
+          <Column size={155} color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="top-right" opacity={0.55}>
           <ArtDecoCorner size={80} corner="top-right" color="var(--brand-gold)" />
@@ -206,13 +198,13 @@ export default function Attorneys() {
             <div className="order-2 lg:order-1">
               <SlideUpOnScroll delay={100}>
                 <Heading as="h2" size="lg" className="mb-2">
-                  {attorneys.michael.name}
+                  {t('attorneys.michael.name')}
                 </Heading>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={150}>
                 <div className="flex items-center gap-3 mb-4">
-                  <Text className="text-accent font-medium">{attorneys.michael.role}</Text>
+                  <Text className="text-accent font-medium">{t('attorneys.michael.role')}</Text>
                   {attorneys.michael.recognition && (
                     <a
                       href={attorneys.michael.recognitionUrl}
@@ -228,38 +220,38 @@ export default function Attorneys() {
 
               <SlideUpOnScroll delay={200}>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {attorneys.michael.specializations.map((spec) => (
-                    <SpecializationBadge key={spec}>{spec}</SpecializationBadge>
+                  {attorneys.michael.specializationKeys.map((key) => (
+                    <SpecializationBadge key={key}>{t(`attorneys.michael.specializations.${key}`)}</SpecializationBadge>
                   ))}
                 </div>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={250}>
                 <Text muted className="mb-6">
-                  {attorneys.michael.bio}
+                  {t('attorneys.michael.bio')}
                 </Text>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={300}>
                 <div className="space-y-2 mb-6">
                   <Text size="sm" className="flex items-center gap-2">
-                    <span className="text-accent">Education:</span>
+                    <span className="text-accent">{t('attorneys.labels.education')}:</span>
                     {attorneys.michael.education} ({attorneys.michael.graduationYear})
                   </Text>
                   <Text size="sm" className="flex items-center gap-2">
-                    <span className="text-accent">Experience:</span>
-                    {attorneys.michael.experience} Years
+                    <span className="text-accent">{t('attorneys.labels.experience')}:</span>
+                    {attorneys.michael.experience} {t('attorneys.labels.years')}
                   </Text>
                 </div>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={350}>
-                <LinkedInLink href={attorneys.michael.linkedin} />
+                <LinkedInLink href={attorneys.michael.linkedin} label={t('attorneys.labels.linkedIn')} />
               </SlideUpOnScroll>
             </div>
 
             <SlideUpOnScroll className="order-1 lg:order-2">
-              <AttorneyImage src={attorneys.michael.image} alt={attorneys.michael.name} />
+              <AttorneyImage src={attorneys.michael.image} alt={t('attorneys.michael.name')} />
             </SlideUpOnScroll>
           </div>
         </div>
@@ -271,7 +263,7 @@ export default function Attorneys() {
           <ArtDecoCorner size={90} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={200} color="var(--brand-gold)" />
+          <Scales size={140} color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.55}>
           <ArtDecoCorner size={90} corner="bottom-left" color="var(--brand-gold)" />
@@ -280,13 +272,13 @@ export default function Attorneys() {
         <div className="max-w-5xl mx-auto text-center">
           <FadeInOnScroll>
             <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
-              A Partnership Built on Excellence
+              {t('attorneys.together.subtitle')}
             </Text>
           </FadeInOnScroll>
 
           <SlideUpOnScroll delay={100}>
             <Heading as="h2" size="lg" className="mt-2 mb-8">
-              Delgado Legal, P.A.
+              {t('attorneys.together.title')}
             </Heading>
           </SlideUpOnScroll>
 
@@ -296,7 +288,7 @@ export default function Attorneys() {
                 <GoldRing size={160} className="absolute inset-0 w-full h-full" />
                 <img
                   src={attorneys.vanessa.image}
-                  alt={attorneys.vanessa.name}
+                  alt={t('attorneys.vanessa.name')}
                   className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full object-cover object-top"
                 />
               </div>
@@ -304,7 +296,7 @@ export default function Attorneys() {
                 <GoldRing size={160} className="absolute inset-0 w-full h-full" />
                 <img
                   src={attorneys.michael.image}
-                  alt={attorneys.michael.name}
+                  alt={t('attorneys.michael.name')}
                   className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full object-cover object-top"
                 />
               </div>
@@ -313,19 +305,19 @@ export default function Attorneys() {
 
           <SlideUpOnScroll delay={300}>
             <Text muted className="max-w-2xl mx-auto mb-4">
-              Since founding Delgado Legal, P.A. in 2014, Michael and Vanessa Delgado have built a practice rooted in client advocacy and legal excellence. Their combined expertise spans real estate law, litigation, and estate planning, offering comprehensive legal solutions to individuals and families throughout South Florida.
+              {t('attorneys.together.description1')}
             </Text>
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={400}>
             <Text muted className="max-w-2xl mx-auto mb-10">
-              Together, they bring over three decades of combined legal experience, a shared commitment to exceptional service, and a deep understanding of the challenges their clients face.
+              {t('attorneys.together.description2')}
             </Text>
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={500}>
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link to="/contact">Schedule a Consultation</Link>
+              <Link to="/contact">{t('attorneys.together.cta')}</Link>
             </Button>
           </SlideUpOnScroll>
         </div>

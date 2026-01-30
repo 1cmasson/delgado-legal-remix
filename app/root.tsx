@@ -11,8 +11,25 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 import { ThemeProvider } from "~/providers/ThemeProvider";
+import { TranslationProvider } from "~/providers/TranslationProvider";
 import { Header } from "~/components/shared/Header";
-import { LanguageSwitcher } from "~/components/shared/LanguageSwitcher";
+import { TranslateWidget } from "~/components/shared/TranslateWidget";
+
+const SITE_URL = "https://silly-gaufre-e5b859.netlify.app";
+
+export const meta: Route.MetaFunction = () => [
+  { title: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
+  { name: "description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more." },
+  { property: "og:title", content: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
+  { property: "og:description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more." },
+  { property: "og:image", content: `${SITE_URL}/og-image.png` },
+  { property: "og:url", content: SITE_URL },
+  { property: "og:type", content: "website" },
+  { name: "twitter:card", content: "summary_large_image" },
+  { name: "twitter:title", content: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
+  { name: "twitter:description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL." },
+  { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
+];
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -53,16 +70,18 @@ function AppContent() {
       <main id="main-content">
         <Outlet />
       </main>
-      <LanguageSwitcher />
+      <TranslateWidget />
     </>
   );
 }
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <TranslationProvider>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </TranslationProvider>
   );
 }
 

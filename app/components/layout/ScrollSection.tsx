@@ -5,7 +5,7 @@ interface ScrollSectionProps {
   className?: string;
   background?: "default" | "muted" | "primary" | "accent" | "accent-solid";
   id?: string;
-  size?: "default" | "compact";
+  size?: "default" | "compact" | "hero";
 }
 
 const backgroundClasses = {
@@ -28,7 +28,7 @@ export function ScrollSection({
       id={id}
       className={cn(
         "scroll-section flex items-center justify-center relative overflow-hidden",
-        size === "default" ? "min-h-screen" : "min-h-[50vh]",
+        size === "default" ? "min-h-screen" : size === "hero" ? "min-h-[400px]" : "min-h-[50vh]",
         backgroundClasses[background],
         className
       )}

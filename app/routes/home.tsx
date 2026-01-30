@@ -13,6 +13,8 @@ import { Heading, Text } from "~/components/shared/Typography";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { useTheme } from "~/providers/ThemeProvider";
+import { useTranslation } from "~/providers/TranslationProvider";
+import { Home as HomeIcon, Shield, Building, ClipboardList, type LucideIcon } from "lucide-react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -21,52 +23,37 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const practiceAreas = [
-  {
-    title: "Real Estate Closings",
-    description: "Smooth real estate transactions from start to finish. Licensed title agent services for buyers, sellers, and agents.",
-    icon: "🏠",
-  },
-  {
-    title: "Foreclosure Defense",
-    description: "Protecting your home and financial future with experienced legal advocacy.",
-    icon: "🛡️",
-  },
-  {
-    title: "Commercial Transactions",
-    description: "Navigate complex business deals with confidence. Expert guidance for commercial property matters.",
-    icon: "🏢",
-  },
-  {
-    title: "Estate Planning",
-    description: "Secure your family's future with wills, trusts, and comprehensive estate planning services.",
-    icon: "📋",
-  },
+const practiceAreaKeys: { key: string; icon: LucideIcon }[] = [
+  { key: "realEstate", icon: HomeIcon },
+  { key: "foreclosure", icon: Shield },
+  { key: "commercial", icon: Building },
+  { key: "estate", icon: ClipboardList },
 ];
 
 const testimonials = [
   {
     quote: "Thank you for being the BEST partner any realtor can ask for. You are amazing! Your professionalism and hard work is like no other.",
     author: "Estrella P.",
-    role: "Realtor",
+    roleKey: "testimonials.roles.realtor",
     image: "/images/testimonials/delgado-customer-1.webp",
   },
   {
     quote: "First time I see an attorney bend over backwards for everyone involved in the transaction. I will keep in mind the way you work!",
     author: "Amada C.",
-    role: "Realtor",
+    roleKey: "testimonials.roles.realtor",
     image: "/images/testimonials/delgado-customer-3.webp",
   },
   {
     quote: "Thank you for making this a quick and painless process. You guys did a great job!",
     author: "Carlos R.",
-    role: "Buyer",
+    roleKey: "testimonials.roles.buyer",
     image: "/images/testimonials/delgado-customer-2.webp",
   },
 ];
 
 export default function Home() {
   const { effect, holiday } = useTheme();
+  const { t } = useTranslation();
   const [showEffects, setShowEffects] = useState(!!effect);
 
   useEffect(() => {
@@ -88,7 +75,7 @@ export default function Home() {
       <HolidayGreetingModal holiday={holiday} />
       <ScrollSnapContainer>
       {/* Hero Section */}
-      <section className="scroll-section min-h-screen flex items-center justify-center relative overflow-hidden bg-primary">
+      <section className="scroll-section h-screen max-h-[700px] md:h-auto md:max-h-none md:min-h-screen flex items-center justify-center relative overflow-hidden bg-primary">
         {/* Background Image - Containerized */}
         <div className="absolute inset-0 flex justify-center z-0">
           <div className="relative w-full max-w-7xl h-full">
@@ -108,29 +95,29 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center relative z-10 px-6">
           <SlideUpOnScroll>
             <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              Real Estate & Legal Solutions
+              {t('home.hero.subtitle')}
             </Text>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={100}>
             <Heading as="h1" size="xl" className="mb-6 text-white">
-              Your Trusted Partner for Real Estate and Legal Solutions
+              {t('home.hero.title')}
             </Heading>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={200}>
             <Text size="lg" className="max-w-2xl mx-auto mb-10 text-white/80">
-              DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent providing expert real estate closings, estate planning, and a variety of legal services throughout South Florida.
+              {t('home.hero.description')}
             </Text>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={300}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-row gap-2 sm:gap-4 justify-center">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                <Link to="/contact">Contact Us</Link>
+                <Link to="/contact">{t('home.hero.ctaPrimary')}</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link to="/practices">Our Services</Link>
+                <Link to="/practices">{t('home.hero.ctaSecondary')}</Link>
               </Button>
             </div>
           </SlideUpOnScroll>
@@ -143,31 +130,35 @@ export default function Home() {
           <div className="text-center mb-16">
             <FadeInOnScroll>
               <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
-                Our Services
+                {t('home.practices.subtitle')}
               </Text>
             </FadeInOnScroll>
             <SlideUpOnScroll delay={100}>
               <Heading as="h2" size="lg" className="mt-2 mb-4">
-                Practice Areas
+                {t('home.practices.title')}
               </Heading>
             </SlideUpOnScroll>
             <SlideUpOnScroll delay={200}>
               <Text muted className="max-w-2xl mx-auto">
-                We offer expert legal representation across multiple practice areas to meet your diverse needs.
+                {t('home.practices.description')}
               </Text>
             </SlideUpOnScroll>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {practiceAreas.map((area, index) => (
-              <SlideUpOnScroll key={area.title} delay={100 + index * 100}>
+            {practiceAreaKeys.map((area, index) => (
+              <SlideUpOnScroll key={area.key} delay={100 + index * 100}>
                 <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full bg-background">
                   <CardHeader>
-                    <span className="text-4xl mb-2 block" aria-hidden="true">{area.icon}</span>
-                    <CardTitle className="group-hover:text-accent transition-colors">{area.title}</CardTitle>
+                    <area.icon className="w-10 h-10 mb-2 text-accent" aria-hidden="true" />
+                    <CardTitle className="group-hover:text-accent transition-colors">
+                      {t(`home.practices.areas.${area.key}.title`)}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base">{area.description}</CardDescription>
+                    <CardDescription className="text-base">
+                      {t(`home.practices.areas.${area.key}.description`)}
+                    </CardDescription>
                   </CardContent>
                 </Card>
               </SlideUpOnScroll>
@@ -177,7 +168,7 @@ export default function Home() {
           <SlideUpOnScroll delay={500}>
             <div className="text-center mt-12">
               <Button asChild variant="outline" size="lg">
-                <Link to="/practices">View All Practice Areas</Link>
+                <Link to="/practices">{t('home.practices.viewAll')}</Link>
               </Button>
             </div>
           </SlideUpOnScroll>
@@ -189,51 +180,45 @@ export default function Home() {
         <DecorativeElement position="top-left" opacity={0.25} className="animate-float">
           <Lines size={250} variant="diagonal" color="var(--brand-gold)" />
         </DecorativeElement>
-        <DecorativeElement position="top-right" opacity={0.55}>
-          <ArtDecoCorner size={90} corner="top-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.55}>
-          <ArtDecoCorner size={90} corner="bottom-left" color="var(--brand-gold)" />
-        </DecorativeElement>
         
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeInOnScroll>
                 <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
-                  About Us
+                  {t('home.about.subtitle')}
                 </Text>
               </FadeInOnScroll>
               <SlideUpOnScroll delay={100}>
                 <Heading as="h2" size="lg" className="mt-2 mb-6">
-                  Your Trusted Legal Partner
+                  {t('home.about.title')}
                 </Heading>
               </SlideUpOnScroll>
               <SlideUpOnScroll delay={200}>
                 <Text className="mb-4">
-                  At DELGADO LEGAL, P.A., we believe in celebrating our clients' victories. Each success story is proof of the trust our clients place in us.
+                  {t('home.about.description1')}
                 </Text>
               </SlideUpOnScroll>
               <SlideUpOnScroll delay={300}>
                 <Text muted className="mb-8">
-                  We're not just attorneys; we're partners in your success story. Whether you're buying your first home, planning for your family's future, or navigating a complex transaction, we provide personalized attention and clear communication throughout your case.
+                  {t('home.about.description2')}
                 </Text>
               </SlideUpOnScroll>
               <SlideUpOnScroll delay={400}>
                 <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link to="/about">About Our Firm</Link>
+                  <Link to="/about">{t('home.about.cta')}</Link>
                 </Button>
               </SlideUpOnScroll>
             </div>
             <SlideUpOnScroll delay={200}>
-              <div className="rounded-2xl aspect-video overflow-hidden shadow-xl">
+              <div className="aspect-video overflow-hidden shadow-2xl max-w-md mx-auto lg:max-w-lg">
                 <picture>
                   <source media="(max-width: 640px)" srcSet="/images/team/trusted-legal-attorney-mobile.webp" />
                   <source media="(max-width: 1024px)" srcSet="/images/team/trusted-legal-attorney-tablet.webp" />
                   <img
                     src="/images/team/trusted-legal-attorney-desktop.webp"
                     alt="Attorney consulting with client at Delgado Legal P.A."
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover grayscale"
                     loading="lazy"
                   />
                 </picture>
@@ -244,7 +229,14 @@ export default function Home() {
       </ScrollSection>
 
       {/* Testimonials Section */}
-      <ScrollSection background="muted" id="testimonials">
+      <section className="scroll-section min-h-screen flex items-center justify-center relative overflow-hidden" id="testimonials">
+        {/* Parallax Background */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed grayscale"
+          style={{ backgroundImage: "url('/images/backgrounds/testimonials/testimonials-bg-desktop.webp')" }}
+        />
+        <div className="absolute inset-0 bg-muted/85" />
+        
         <DecorativeElement position="top-left" opacity={0.55}>
           <ArtDecoCorner size={80} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
@@ -252,16 +244,17 @@ export default function Home() {
           <ArtDecoCorner size={80} corner="bottom-right" color="var(--brand-gold)" />
         </DecorativeElement>
         
+        <div className="container mx-auto px-4 py-10 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <FadeInOnScroll>
               <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
-                Testimonials
+                {t('home.testimonials.subtitle')}
               </Text>
             </FadeInOnScroll>
             <SlideUpOnScroll delay={100}>
               <Heading as="h2" size="lg" className="mt-2 mb-4">
-                What Our Clients Say
+                {t('home.testimonials.title')}
               </Heading>
             </SlideUpOnScroll>
           </div>
@@ -284,7 +277,7 @@ export default function Home() {
                           <Text as="cite" className="not-italic font-semibold block">
                             {testimonial.author}
                           </Text>
-                          <Text size="sm" muted>{testimonial.role}</Text>
+                          <Text size="sm" muted>{t(testimonial.roleKey)}</Text>
                         </div>
                       </footer>
                     </blockquote>
@@ -297,12 +290,13 @@ export default function Home() {
           <SlideUpOnScroll delay={500}>
             <div className="text-center mt-12">
               <Button asChild variant="outline" size="lg">
-                <Link to="/testimonials">Read More Testimonials</Link>
+                <Link to="/testimonials">{t('home.testimonials.viewAll')}</Link>
               </Button>
             </div>
           </SlideUpOnScroll>
         </div>
-      </ScrollSection>
+        </div>
+      </section>
 
       {/* CTA Banner */}
       <ScrollSection background="accent-solid" size="compact">
@@ -316,17 +310,17 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <SlideUpOnScroll>
             <Heading as="h2" size="lg" className="mb-6">
-              Ready to Get Started?
+              {t('home.cta.title')}
             </Heading>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={100}>
             <Text className="mb-10 text-accent-foreground/80 text-lg">
-              Contact us today to discuss your real estate transaction or legal matter.
+              {t('home.cta.description')}
             </Text>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={200}>
             <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/contact">Contact Us Today</Link>
+              <Link to="/contact">{t('home.cta.button')}</Link>
             </Button>
           </SlideUpOnScroll>
         </div>

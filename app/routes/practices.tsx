@@ -6,6 +6,8 @@ import { Heading, Text } from "~/components/shared/Typography";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Link } from "react-router";
+import { useTranslation } from "~/providers/TranslationProvider";
+import { Home as HomeIcon, Shield, Building, ClipboardList, ScrollText, type LucideIcon } from "lucide-react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,76 +16,36 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const practiceAreas = [
+const practiceAreaKeys: { id: string; key: string; icon: LucideIcon; serviceKeys: string[] }[] = [
   {
     id: "real-estate",
-    title: "Real Estate Closings",
-    icon: "🏠",
-    description: "Smooth real estate transactions from start to finish. As a licensed title agent, we handle all aspects of your residential closing with expertise and attention to detail.",
-    services: [
-      "Residential Closings",
-      "Title Search & Insurance",
-      "Purchase & Sale Contracts",
-      "Settlement Services",
-      "Refinancing",
-      "For Sale By Owner (FSBO)",
-    ],
+    key: "realEstate",
+    icon: HomeIcon,
+    serviceKeys: ["residential", "titleSearch", "contracts", "settlement", "refinancing", "fsbo"],
   },
   {
     id: "foreclosure",
-    title: "Foreclosure Defense",
-    icon: "🛡️",
-    description: "Protecting your home and financial future. We provide experienced legal advocacy to help you explore all available options.",
-    services: [
-      "Loan Modification Assistance",
-      "Foreclosure Litigation",
-      "Short Sale Negotiations",
-      "Deed in Lieu Options",
-      "Loss Mitigation",
-      "Bankruptcy Alternatives",
-    ],
+    key: "foreclosure",
+    icon: Shield,
+    serviceKeys: ["loanMod", "litigation", "shortSale", "deedInLieu", "lossMitigation", "bankruptcy"],
   },
   {
     id: "commercial",
-    title: "Commercial Transactions",
-    icon: "🏢",
-    description: "Navigate complex business deals with confidence. Our team provides expert guidance for commercial property matters and business transactions.",
-    services: [
-      "Commercial Property Closings",
-      "Lease Negotiations",
-      "Business Asset Purchases",
-      "Due Diligence Review",
-      "Contract Drafting",
-      "Title Services",
-    ],
+    key: "commercial",
+    icon: Building,
+    serviceKeys: ["closings", "lease", "asset", "dueDiligence", "contracts", "title"],
   },
   {
     id: "estate-planning",
-    title: "Estate Planning",
-    icon: "📋",
-    description: "Secure your family's future with comprehensive estate planning services tailored to your unique situation and goals.",
-    services: [
-      "Wills & Trusts",
-      "Power of Attorney",
-      "Healthcare Directives",
-      "Probate Assistance",
-      "Asset Protection",
-      "Estate Administration",
-    ],
+    key: "estate",
+    icon: ClipboardList,
+    serviceKeys: ["wills", "poa", "healthcare", "probate", "assetProtection", "administration"],
   },
   {
     id: "divorce",
-    title: "Uncontested Divorces",
-    icon: "📄",
-    description: "Simple, efficient family transitions. We help couples who have reached agreement navigate the divorce process smoothly.",
-    services: [
-      "Uncontested Divorce Filing",
-      "Settlement Agreements",
-      "Property Division Docs",
-      "Parenting Plans",
-      "Name Changes",
-      "Final Judgment Preparation",
-    ],
+    key: "divorce",
+    icon: ScrollText,
+    serviceKeys: ["filing", "settlement", "property", "parenting", "nameChange", "judgment"],
   },
 ];
 
@@ -96,15 +58,17 @@ const decorativeElements = [
 ];
 
 export default function Practices() {
+  const { t } = useTranslation();
+
   return (
     <ScrollSnapContainer>
       {/* Hero Section */}
-      <ScrollSection className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <DecorativeElement position="top-left" opacity={0.60}>
           <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Gavel size={250} color="var(--brand-navy)" />
+          <Gavel size={175} color="var(--brand-navy)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.25}>
           <Lines size={200} variant="diagonal" color="var(--brand-gold)" />
@@ -116,26 +80,26 @@ export default function Practices() {
         <div className="max-w-4xl mx-auto text-center">
           <SlideUpOnScroll>
             <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              Our Services
+              {t('practices.hero.subtitle')}
             </Text>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={100}>
             <Heading as="h1" size="xl" className="mb-6">
-              Practice Areas
+              {t('practices.hero.title')}
             </Heading>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={200}>
             <Text size="lg" muted className="max-w-2xl mx-auto">
-              From real estate transactions to estate planning, we offer full-service legal expertise tailored to your needs.
+              {t('practices.hero.description')}
             </Text>
           </SlideUpOnScroll>
         </div>
       </ScrollSection>
 
       {/* Practice Area Sections */}
-      {practiceAreas.map((area, index) => {
+      {practiceAreaKeys.map((area, index) => {
         const decoration = decorativeElements[index % decorativeElements.length];
         const isEven = index % 2 === 0;
         
@@ -156,7 +120,7 @@ export default function Practices() {
               opacity={0.25} 
               className={index % 2 === 0 ? "animate-float" : "animate-float-slow"}
             >
-              <decoration.Component size={200} color={isEven ? "var(--brand-navy)" : "var(--brand-gold)"} />
+              <decoration.Component size={140} color={isEven ? "var(--brand-navy)" : "var(--brand-gold)"} />
             </DecorativeElement>
             <DecorativeElement 
               position="bottom-right" 
@@ -169,21 +133,21 @@ export default function Practices() {
               <div className={`grid lg:grid-cols-2 gap-12 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                 <div className={!isEven ? 'lg:col-start-2' : ''}>
                   <SlideUpOnScroll>
-                    <span className="text-5xl mb-4 block" aria-hidden="true">{area.icon}</span>
+                    <area.icon className="w-12 h-12 mb-4 text-accent" aria-hidden="true" />
                   </SlideUpOnScroll>
                   <SlideUpOnScroll delay={100}>
                     <Heading as="h2" size="md" className="mb-4">
-                      {area.title}
+                      {t(`practices.areas.${area.key}.title`)}
                     </Heading>
                   </SlideUpOnScroll>
                   <SlideUpOnScroll delay={200}>
                     <Text className="mb-6">
-                      {area.description}
+                      {t(`practices.areas.${area.key}.description`)}
                     </Text>
                   </SlideUpOnScroll>
                   <SlideUpOnScroll delay={300}>
                     <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-                      <Link to="/contact">Schedule Consultation</Link>
+                      <Link to="/contact">{t('practices.scheduleCta')}</Link>
                     </Button>
                   </SlideUpOnScroll>
                 </div>
@@ -191,14 +155,14 @@ export default function Practices() {
                 <SlideUpOnScroll delay={150} className={!isEven ? 'lg:col-start-1' : ''}>
                   <Card className="bg-background">
                     <CardHeader>
-                      <CardTitle className="text-lg">Services Include:</CardTitle>
+                      <CardTitle className="text-lg">{t('practices.servicesInclude')}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {area.services.map((service) => (
-                          <li key={service} className="flex items-center gap-2">
+                        {area.serviceKeys.map((serviceKey) => (
+                          <li key={serviceKey} className="flex items-center gap-2">
                             <span className="text-accent" aria-hidden="true">✓</span>
-                            <Text size="sm">{service}</Text>
+                            <Text size="sm">{t(`practices.areas.${area.key}.services.${serviceKey}`)}</Text>
                           </li>
                         ))}
                       </ul>
@@ -217,10 +181,10 @@ export default function Practices() {
           <ArtDecoCorner size={100} corner="top-left" color="white" />
         </DecorativeElement>
         <DecorativeElement position="center-left" opacity={0.25}>
-          <Column size={280} color="white" />
+          <Column size={200} color="white" />
         </DecorativeElement>
         <DecorativeElement position="center-right" opacity={0.25}>
-          <Column size={280} color="white" />
+          <Column size={200} color="white" />
         </DecorativeElement>
         <DecorativeElement position="bottom-right" opacity={0.60}>
           <ArtDecoCorner size={100} corner="bottom-right" color="white" />
@@ -229,17 +193,17 @@ export default function Practices() {
         <div className="max-w-3xl mx-auto text-center">
           <SlideUpOnScroll>
             <Heading as="h2" size="lg" className="mb-6">
-              Ready to Get Started?
+              {t('practices.cta.title')}
             </Heading>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={100}>
             <Text className="mb-10 text-primary-foreground/80 text-lg">
-              Contact us today to discuss your real estate transaction or legal matter.
+              {t('practices.cta.description')}
             </Text>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={200}>
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">{t('practices.cta.button')}</Link>
             </Button>
           </SlideUpOnScroll>
         </div>

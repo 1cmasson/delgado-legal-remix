@@ -6,6 +6,7 @@ import { Heading, Text } from "~/components/shared/Typography";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Link } from "react-router";
+import { useTranslation } from "~/providers/TranslationProvider";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,55 +15,33 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const values = [
-  {
-    title: "Client-Centric",
-    description: "Putting our clients first is the cornerstone of our practice. We prioritize your needs and goals, ensuring tailored solutions.",
-    icon: "🎯",
-  },
-  {
-    title: "Integrity",
-    description: "We uphold the highest ethical standards. Trust, honesty, and transparency are at the core of everything we do.",
-    icon: "⚖️",
-  },
-  {
-    title: "Excellence",
-    description: "We strive for excellence in every case, providing top-tier legal representation no matter the complexity.",
-    icon: "🏆",
-  },
-  {
-    title: "Expertise",
-    description: "With deep knowledge and extensive experience in various practice areas, we tackle the toughest legal challenges.",
-    icon: "📚",
-  },
-  {
-    title: "Personalized",
-    description: "We understand each client's situation is unique. We provide personalized attention and guidance you need.",
-    icon: "🤝",
-  },
-  {
-    title: "Community",
-    description: "We believe in giving back. Our commitment extends beyond the courtroom through community engagement.",
-    icon: "❤️",
-  },
+const valueKeys = [
+  { key: "clientCentric", icon: "🎯" },
+  { key: "integrity", icon: "⚖️" },
+  { key: "excellence", icon: "🏆" },
+  { key: "expertise", icon: "📚" },
+  { key: "personalized", icon: "🤝" },
+  { key: "community", icon: "❤️" },
 ];
 
 const stats = [
-  { value: "100+", label: "Successful Cases Handled" },
-  { value: "15+", label: "Years Of Legal Excellence" },
-  { value: "98%", label: "Client Satisfaction Rate" },
+  { value: "100+", labelKey: "about.stats.cases" },
+  { value: "15+", labelKey: "about.stats.years" },
+  { value: "98%", labelKey: "about.stats.satisfaction" },
 ];
 
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <ScrollSnapContainer>
       {/* Hero Section */}
-      <ScrollSection className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <DecorativeElement position="top-left" opacity={0.60}>
           <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={280} color="var(--brand-navy)" />
+          <Scales size={200} color="var(--brand-navy)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.25}>
           <Lines size={200} variant="diagonal" color="var(--brand-gold)" />
@@ -74,19 +53,19 @@ export default function About() {
         <div className="max-w-4xl mx-auto text-center">
           <SlideUpOnScroll>
             <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              About Us
+              {t('about.hero.subtitle')}
             </Text>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={100}>
             <Heading as="h1" size="xl" className="mb-6">
-              Celebrating Our Clients' Victories
+              {t('about.hero.title')}
             </Heading>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={200}>
             <Text size="lg" muted className="max-w-2xl mx-auto">
-              Each success is proof of the trust our clients place in us. We're not just attorneys; we're partners in your success story.
+              {t('about.hero.description')}
             </Text>
           </SlideUpOnScroll>
         </div>
@@ -98,7 +77,7 @@ export default function About() {
           <ArtDecoCorner size={80} corner="top-right" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="center-right" opacity={0.25}>
-          <Document size={250} color="var(--brand-navy)" />
+          <Document size={175} color="var(--brand-navy)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.55}>
           <ArtDecoCorner size={80} corner="bottom-left" color="var(--brand-gold)" />
@@ -123,26 +102,26 @@ export default function About() {
             <div>
               <SlideUpOnScroll>
                 <Heading as="h2" size="lg" className="mb-6">
-                  Our Mission
+                  {t('about.mission.title')}
                 </Heading>
               </SlideUpOnScroll>
               <SlideUpOnScroll delay={100}>
                 <Text className="mb-4">
-                  At DELGADO LEGAL, P.A., our mission is to provide legal support and guidance to our clients and help them navigate complex legal challenges with confidence.
+                  {t('about.mission.description1')}
                 </Text>
               </SlideUpOnScroll>
               <SlideUpOnScroll delay={200}>
                 <Text muted>
-                  We are committed to delivering high quality legal services that prioritize our clients' interests, ensuring their rights are protected, and their goals are achieved. Our mission is not just about practicing law; it's about making a positive impact on the lives of those we serve, one case at a time.
+                  {t('about.mission.description2')}
                 </Text>
               </SlideUpOnScroll>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {stats.map((stat, index) => (
-                <SlideUpOnScroll key={stat.label} delay={100 + index * 100}>
+                <SlideUpOnScroll key={stat.labelKey} delay={100 + index * 100}>
                   <div className="text-center">
                     <Text className="text-5xl font-bold text-accent">{stat.value}</Text>
-                    <Text size="sm" muted className="mt-3">{stat.label}</Text>
+                    <Text size="sm" muted className="mt-3">{t(stat.labelKey)}</Text>
                   </div>
                 </SlideUpOnScroll>
               ))}
@@ -154,7 +133,7 @@ export default function About() {
       {/* Values Section */}
       <ScrollSection background="muted" id="values">
         <DecorativeElement position="top-left" opacity={0.25} className="animate-float">
-          <Column size={220} color="var(--brand-gold)" />
+          <Column size={155} color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="top-right" opacity={0.55}>
           <ArtDecoCorner size={90} corner="top-right" color="var(--brand-gold)" />
@@ -167,26 +146,26 @@ export default function About() {
           <div className="text-center mb-16">
             <FadeInOnScroll>
               <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
-                What We Stand For
+                {t('about.values.subtitle')}
               </Text>
             </FadeInOnScroll>
             <SlideUpOnScroll delay={100}>
               <Heading as="h2" size="lg" className="mt-2">
-                Our Core Values
+                {t('about.values.title')}
               </Heading>
             </SlideUpOnScroll>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {values.map((value, index) => (
-              <SlideUpOnScroll key={value.title} delay={100 + index * 75}>
+            {valueKeys.map((value, index) => (
+              <SlideUpOnScroll key={value.key} delay={100 + index * 75}>
                 <Card className="text-center h-full bg-background hover:shadow-md transition-shadow">
                   <CardHeader>
                     <span className="text-4xl mb-2 block" aria-hidden="true">{value.icon}</span>
-                    <CardTitle>{value.title}</CardTitle>
+                    <CardTitle>{t(`about.values.items.${value.key}.title`)}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <Text size="sm" muted>{value.description}</Text>
+                    <Text size="sm" muted>{t(`about.values.items.${value.key}.description`)}</Text>
                   </CardContent>
                 </Card>
               </SlideUpOnScroll>
@@ -201,7 +180,7 @@ export default function About() {
           <ArtDecoCorner size={80} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={200} color="var(--brand-gold)" />
+          <Scales size={140} color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.55}>
           <ArtDecoCorner size={80} corner="bottom-left" color="var(--brand-gold)" />
@@ -210,22 +189,22 @@ export default function About() {
         <div className="max-w-3xl mx-auto text-center">
           <FadeInOnScroll>
             <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
-              Meet the Team
+              {t('about.team.subtitle')}
             </Text>
           </FadeInOnScroll>
           <SlideUpOnScroll delay={100}>
             <Heading as="h2" size="lg" className="mt-2 mb-4">
-              Our Attorneys
+              {t('about.team.title')}
             </Heading>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={200}>
             <Text muted className="max-w-2xl mx-auto mb-8">
-              Our team brings together diverse expertise and a shared commitment to client success. Meet attorneys Michael and Vanessa Delgado.
+              {t('about.team.description')}
             </Text>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={300}>
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link to="/attorneys">Meet Our Attorneys</Link>
+              <Link to="/attorneys">{t('about.team.cta')}</Link>
             </Button>
           </SlideUpOnScroll>
         </div>

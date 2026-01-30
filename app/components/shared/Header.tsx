@@ -6,15 +6,7 @@ import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '~/components/ui/sheet';
 import { useIsMobile } from '~/hooks/useMediaQuery';
-
-const navigation = [
-  { name: 'nav.about', href: '/about', label: 'About Our Firm' },
-  { name: 'nav.attorneys', href: '/attorneys', label: 'Our Attorneys' },
-  { name: 'nav.practices', href: '/practices', label: 'Practice Areas' },
-  { name: 'nav.testimonials', href: '/testimonials', label: 'Testimonials' },
-  { name: 'nav.faq', href: '/faq', label: 'FAQ' },
-  { name: 'nav.contact', href: '/contact', label: 'Contact' },
-];
+import { useTranslation } from '~/providers/TranslationProvider';
 
 interface HeaderProps {
   className?: string;
@@ -23,6 +15,17 @@ interface HeaderProps {
 export function Header({ className }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
+
+  const navigation = [
+    { href: '/', labelKey: 'nav.home' },
+    { href: '/about', labelKey: 'nav.about' },
+    { href: '/attorneys', labelKey: 'nav.attorneys' },
+    { href: '/practices', labelKey: 'nav.practices' },
+    { href: '/testimonials', labelKey: 'nav.testimonials' },
+    { href: '/faq', labelKey: 'nav.faq' },
+    { href: '/contact', labelKey: 'nav.contact' },
+  ];
 
   return (
     <header
@@ -64,9 +67,9 @@ export function Header({ className }: HeaderProps) {
             <Link
               key={item.href}
               to={item.href}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm px-2 py-1 whitespace-nowrap"
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-accent hover:underline focus:outline-none focus:underline px-2 py-1 whitespace-nowrap"
             >
-              {item.label}
+              {t(item.labelKey)}
             </Link>
           ))}
         </div>
@@ -74,7 +77,7 @@ export function Header({ className }: HeaderProps) {
         {/* Mobile Menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon" aria-label="Open menu">
+            <Button variant="ghost" size="icon" aria-label={t('common.openMenu')}>
               <svg
                 className="h-6 w-6"
                 fill="none"
@@ -100,7 +103,7 @@ export function Header({ className }: HeaderProps) {
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-lg font-medium py-2 px-4 rounded-md hover:bg-muted transition-colors"
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               ))}
             </nav>
@@ -113,7 +116,7 @@ export function Header({ className }: HeaderProps) {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-background focus:text-foreground focus:rounded-md focus:shadow-lg"
       >
-        Skip to main content
+        {t('common.skipToContent')}
       </a>
     </header>
   );

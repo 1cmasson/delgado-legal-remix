@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
+import { useTranslation } from "~/providers/TranslationProvider";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -17,41 +18,52 @@ export function meta({}: Route.MetaArgs) {
 
 const contactInfo = [
   {
-    title: "Phone",
+    titleKey: "contact.info.phone",
     value: "(786) 762-2389",
     href: "tel:+17867622389",
     icon: "📞",
   },
   {
-    title: "Email",
+    titleKey: "contact.info.email",
     value: "michael@delgadolegalpa.com",
     href: "mailto:michael@delgadolegalpa.com",
     icon: "✉️",
   },
   {
-    title: "Location",
-    value: "Miami Lakes, FL\nServing South Florida",
+    titleKey: "contact.info.location",
+    valueKey: "contact.info.locationValue",
     href: "https://maps.app.goo.gl/aEVBbRF9mQwFji8x6",
     icon: "📍",
   },
   {
-    title: "Office Hours",
-    value: "Mon-Fri: 9AM - 6PM\nSat: By Appointment",
+    titleKey: "contact.info.hours",
+    valueKey: "contact.info.hoursValue",
     href: null,
     icon: "🕐",
   },
 ];
 
+const serviceOptions = [
+  { valueKey: "contact.form.services.realEstate", value: "real-estate" },
+  { valueKey: "contact.form.services.foreclosure", value: "foreclosure" },
+  { valueKey: "contact.form.services.commercial", value: "commercial" },
+  { valueKey: "contact.form.services.estate", value: "estate" },
+  { valueKey: "contact.form.services.divorce", value: "divorce" },
+  { valueKey: "contact.form.services.other", value: "other" },
+];
+
 export default function Contact() {
+  const { t } = useTranslation();
+
   return (
     <ScrollSnapContainer>
       {/* Hero Section */}
-      <ScrollSection className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <DecorativeElement position="top-left" opacity={0.60}>
           <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Document size={250} color="var(--brand-navy)" />
+          <Document size={175} color="var(--brand-navy)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.25}>
           <Lines size={180} variant="diagonal" color="var(--brand-gold)" />
@@ -63,19 +75,19 @@ export default function Contact() {
         <div className="max-w-4xl mx-auto text-center">
           <SlideUpOnScroll>
             <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              Get in Touch
+              {t('contact.hero.subtitle')}
             </Text>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={100}>
             <Heading as="h1" size="xl" className="mb-6">
-              Contact Us
+              {t('contact.hero.title')}
             </Heading>
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={200}>
             <Text size="lg" muted className="max-w-2xl mx-auto">
-              Ready to discuss your real estate closing or legal matter? Contact us today.
+              {t('contact.hero.description')}
             </Text>
           </SlideUpOnScroll>
         </div>
@@ -87,7 +99,7 @@ export default function Contact() {
           <ArtDecoCorner size={90} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="center-right" opacity={0.25}>
-          <Scales size={280} color="var(--brand-navy)" />
+          <Scales size={200} color="var(--brand-navy)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.55}>
           <ArtDecoCorner size={90} corner="bottom-left" color="var(--brand-gold)" />
@@ -102,9 +114,9 @@ export default function Contact() {
             <SlideUpOnScroll>
               <Card className="h-full">
                 <CardHeader>
-                  <CardTitle>Send Us a Message</CardTitle>
+                  <CardTitle>{t('contact.form.title')}</CardTitle>
                   <Text size="sm" muted>
-                    Fill out the form below and we'll get back to you within 24 hours.
+                    {t('contact.form.subtitle')}
                   </Text>
                 </CardHeader>
                 <CardContent>
@@ -112,7 +124,7 @@ export default function Contact() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <label htmlFor="firstName" className="text-sm font-medium">
-                          First Name <span className="text-destructive">*</span>
+                          {t('contact.form.firstName')} <span className="text-destructive">{t('contact.form.required')}</span>
                         </label>
                         <Input
                           id="firstName"
@@ -124,7 +136,7 @@ export default function Contact() {
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="lastName" className="text-sm font-medium">
-                          Last Name <span className="text-destructive">*</span>
+                          {t('contact.form.lastName')} <span className="text-destructive">{t('contact.form.required')}</span>
                         </label>
                         <Input
                           id="lastName"
@@ -138,7 +150,7 @@ export default function Contact() {
                     
                     <div className="space-y-2">
                       <label htmlFor="email" className="text-sm font-medium">
-                        Email Address <span className="text-destructive">*</span>
+                        {t('contact.form.email')} <span className="text-destructive">{t('contact.form.required')}</span>
                       </label>
                       <Input
                         id="email"
@@ -152,7 +164,7 @@ export default function Contact() {
                     
                     <div className="space-y-2">
                       <label htmlFor="phone" className="text-sm font-medium">
-                        Phone Number
+                        {t('contact.form.phone')}
                       </label>
                       <Input
                         id="phone"
@@ -164,31 +176,30 @@ export default function Contact() {
                     
                     <div className="space-y-2">
                       <label htmlFor="caseType" className="text-sm font-medium">
-                        Type of Service
+                        {t('contact.form.serviceType')}
                       </label>
                       <select
                         id="caseType"
                         name="caseType"
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                       >
-                        <option value="">Select a service...</option>
-                        <option value="real-estate">Real Estate Closing</option>
-                        <option value="foreclosure">Foreclosure Defense</option>
-                        <option value="commercial">Commercial Transaction</option>
-                        <option value="estate">Estate Planning</option>
-                        <option value="divorce">Uncontested Divorce</option>
-                        <option value="other">Other</option>
+                        <option value="">{t('contact.form.selectService')}</option>
+                        {serviceOptions.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {t(option.valueKey)}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     
                     <div className="space-y-2">
                       <label htmlFor="message" className="text-sm font-medium">
-                        Your Message <span className="text-destructive">*</span>
+                        {t('contact.form.message')} <span className="text-destructive">{t('contact.form.required')}</span>
                       </label>
                       <Textarea
                         id="message"
                         name="message"
-                        placeholder="Please describe your situation..."
+                        placeholder={t('contact.form.messagePlaceholder')}
                         rows={5}
                         required
                         aria-required="true"
@@ -200,11 +211,11 @@ export default function Contact() {
                       size="lg" 
                       className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                     >
-                      Send Message
+                      {t('contact.form.submit')}
                     </Button>
                     
                     <Text size="xs" muted className="text-center">
-                      By submitting this form, you agree to our privacy policy. Your information is kept confidential.
+                      {t('contact.form.disclaimer')}
                     </Text>
                   </form>
                 </CardContent>
@@ -215,28 +226,28 @@ export default function Contact() {
             <div className="space-y-6">
               <SlideUpOnScroll delay={100}>
                 <Heading as="h2" size="sm" className="mb-4">
-                  Contact Information
+                  {t('contact.info.title')}
                 </Heading>
               </SlideUpOnScroll>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {contactInfo.map((info, index) => (
-                  <SlideUpOnScroll key={info.title} delay={150 + index * 75}>
+                  <SlideUpOnScroll key={info.titleKey} delay={150 + index * 75}>
                     <Card className="h-full hover:shadow-md transition-shadow">
                       <CardContent className="pt-6">
                         <span className="text-2xl mb-2 block" aria-hidden="true">{info.icon}</span>
                         <Text as="span" className="font-semibold block mb-1">
-                          {info.title}
+                          {t(info.titleKey)}
                         </Text>
                         {info.href ? (
                           <a 
                             href={info.href}
                             className="text-sm text-muted-foreground hover:text-accent transition-colors whitespace-pre-line"
                           >
-                            {info.value}
+                            {info.valueKey ? t(info.valueKey) : info.value}
                           </a>
                         ) : (
                           <Text size="sm" muted className="whitespace-pre-line">
-                            {info.value}
+                            {info.valueKey ? t(info.valueKey) : info.value}
                           </Text>
                         )}
                       </CardContent>

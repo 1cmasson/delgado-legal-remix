@@ -387,3 +387,179 @@ body {
     display: none;
   }
 }
+
+/* ============================================
+   Translate Widget - Floating Language Toggle
+   ============================================ */
+
+.translate-widget {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Container for button + close (for positioning) */
+.translate-widget__container {
+  position: relative;
+}
+
+.translate-widget__button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--brand-navy);
+  border: 2px solid var(--brand-navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.translate-widget__button:hover {
+  transform: scale(1.08);
+  background: color-mix(in srgb, var(--brand-navy), black 15%);
+  border-color: color-mix(in srgb, var(--brand-navy), black 15%);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.translate-widget__button:focus {
+  outline: 2px solid var(--brand-navy);
+  outline-offset: 3px;
+}
+
+/* Flag fills the entire button, scaled up to hide rectangular edges */
+.translate-widget__flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: scale(1.15);
+}
+
+/* Language text overlay on flag */
+.translate-widget__lang {
+  position: absolute;
+  z-index: 2;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 0 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* Close button - positioned at top-right corner */
+.translate-widget__close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--muted-foreground);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  z-index: 2;
+}
+
+.translate-widget__close:hover {
+  background: var(--brand-navy);
+  color: white;
+  border-color: var(--brand-navy);
+}
+
+.translate-widget__close:focus {
+  outline: none;
+}
+
+/* Confirmation tooltip - appears below widget */
+.translate-widget__confirm {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+.translate-widget__confirm[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.translate-widget__confirm-text {
+  font-size: 0.875rem;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.translate-widget__confirm-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.translate-widget__confirm-btn {
+  padding: 4px 10px;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.translate-widget__confirm-btn--yes {
+  background: var(--brand-navy);
+  color: white;
+  border: none;
+}
+
+.translate-widget__confirm-btn--yes:hover {
+  background: color-mix(in srgb, var(--brand-navy), black 10%);
+}
+
+.translate-widget__confirm-btn--no {
+  background: transparent;
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+}
+
+.translate-widget__confirm-btn--no:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+
+
+/* Dark mode adjustments */
+.dark .translate-widget__confirm {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+.dark .translate-widget__close {
+  background: var(--card);
+  border-color: var(--border);
+}
