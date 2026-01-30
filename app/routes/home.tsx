@@ -1,11 +1,18 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router";
 import type { Route } from "./+types/home";
 import { ScrollSnapContainer, ScrollSection } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Scales, Column, Document, Lines, ArtDecoCorner } from "~/components/decorations";
+import { SnowParticles } from "~/components/effects/SnowParticles";
+import { HeartsParticles } from "~/components/effects/HeartsParticles";
+import { FireworksParticles } from "~/components/effects/FireworksParticles";
+import { ConfettiParticles } from "~/components/effects/ConfettiParticles";
+import { HolidayGreetingModal } from "~/components/holiday/HolidayGreetingModal";
+import { DecorativeElement, Column, Lines, ArtDecoCorner } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
-import { Link } from "react-router";
+import { useTheme } from "~/providers/ThemeProvider";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -59,8 +66,27 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const { effect, holiday } = useTheme();
+  const [showEffects, setShowEffects] = useState(!!effect);
+
+  useEffect(() => {
+    if (!effect) {
+      setShowEffects(false);
+      return;
+    }
+    setShowEffects(true);
+    const timer = setTimeout(() => setShowEffects(false), 15000);
+    return () => clearTimeout(timer);
+  }, [effect]);
+
   return (
-    <ScrollSnapContainer>
+    <>
+      {showEffects && effect === 'snow' && <SnowParticles />}
+      {showEffects && effect === 'hearts' && <HeartsParticles />}
+      {showEffects && effect === 'fireworks' && <FireworksParticles />}
+      {showEffects && effect === 'confetti' && <ConfettiParticles />}
+      <HolidayGreetingModal holiday={holiday} />
+      <ScrollSnapContainer>
       {/* Hero Section */}
       <section className="scroll-section min-h-screen flex items-center justify-center relative overflow-hidden bg-primary">
         {/* Background Image - Containerized */}
@@ -306,5 +332,6 @@ export default function Home() {
         </div>
       </ScrollSection>
     </ScrollSnapContainer>
+    </>
   );
 }

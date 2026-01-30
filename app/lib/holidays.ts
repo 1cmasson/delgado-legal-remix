@@ -6,6 +6,11 @@ export interface HolidayConfig {
   effect?: 'snow' | 'hearts' | 'fireworks' | 'confetti';
   accentColor?: string;
   logoVariant?: string;
+  greeting: {
+    title: string;
+    message: string;
+    emoji: string;
+  };
 }
 
 export const holidays: HolidayConfig[] = [
@@ -16,6 +21,11 @@ export const holidays: HolidayConfig[] = [
     effect: 'snow',
     accentColor: '#c41e3a',
     logoVariant: 'christmas',
+    greeting: {
+      title: 'Merry Christmas!',
+      message: 'Wishing you and your loved ones a joyful holiday season filled with peace and happiness.',
+      emoji: '🎄',
+    },
   },
   {
     name: 'valentines',
@@ -23,22 +33,44 @@ export const holidays: HolidayConfig[] = [
     endDate: { month: 2, day: 14 },
     effect: 'hearts',
     accentColor: '#e91e63',
+    greeting: {
+      title: "Happy Valentine's Day!",
+      message: 'Spreading love and warmth to you and yours on this special day.',
+      emoji: '💕',
+    },
   },
   {
     name: 'independence',
     startDate: { month: 7, day: 1 },
     endDate: { month: 7, day: 4 },
     effect: 'fireworks',
+    greeting: {
+      title: 'Happy Independence Day!',
+      message: 'Celebrating freedom and the spirit of America. Have a safe and happy 4th of July!',
+      emoji: '🎆',
+    },
   },
   {
     name: 'newYear',
     startDate: { month: 1, day: 1 },
     endDate: { month: 1, day: 3 },
     effect: 'confetti',
+    greeting: {
+      title: 'Happy New Year!',
+      message: 'Wishing you a wonderful year ahead filled with success, health, and happiness.',
+      emoji: '🎉',
+    },
   },
 ];
 
 export function getCurrentHoliday(): HolidayConfig | null {
+  // Allow override via environment variable for testing (e.g., VITE_TEST_HOLIDAY=christmas)
+  const testHoliday = import.meta.env.VITE_TEST_HOLIDAY;
+  if (testHoliday) {
+    const found = holidays.find((h) => h.name === testHoliday);
+    if (found) return found;
+  }
+
   const now = new Date();
   const currentMonth = now.getMonth() + 1;
   const currentDay = now.getDate();

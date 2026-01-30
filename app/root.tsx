@@ -10,10 +10,9 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
-import { ThemeProvider, useTheme } from "~/providers/ThemeProvider";
+import { ThemeProvider } from "~/providers/ThemeProvider";
 import { Header } from "~/components/shared/Header";
 import { LanguageSwitcher } from "~/components/shared/LanguageSwitcher";
-import { SnowParticles } from "~/components/effects/SnowParticles";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -48,11 +47,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function AppContent() {
-  const { effect } = useTheme();
-  
   return (
     <>
-      {effect === 'snow' && <SnowParticles count={40} />}
       <Header />
       <main id="main-content">
         <Outlet />

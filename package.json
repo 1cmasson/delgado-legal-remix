@@ -6,6 +6,10 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
+    "dev:christmas": "VITE_TEST_HOLIDAY=christmas react-router dev",
+    "dev:valentines": "VITE_TEST_HOLIDAY=valentines react-router dev",
+    "dev:independence": "VITE_TEST_HOLIDAY=independence react-router dev",
+    "dev:newyear": "VITE_TEST_HOLIDAY=newYear react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
