@@ -1,4 +1,5 @@
-import { createRequestHandler } from "@react-router/node";
+import pkg from "@react-router/node";
+const { createRequestHandler } = pkg;
 import type { Context } from "@netlify/functions";
 
 // @ts-expect-error - virtual module from build
