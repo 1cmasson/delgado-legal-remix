@@ -4,8 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 html,
@@ -138,6 +139,9 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
   }
 }
 
@@ -395,17 +399,19 @@ body {
 .translate-widget {
   position: fixed;
   bottom: 12px;
-  right: 12px;
+  right: 36px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   gap: 12px;
+  pointer-events: none; /* Allow scroll passthrough */
 }
 
 /* Container for button + close (for positioning) */
 .translate-widget__container {
   position: relative;
+  pointer-events: auto; /* Re-enable clicks on buttons */
 }
 
 .translate-widget__button {
@@ -425,15 +431,13 @@ body {
 }
 
 .translate-widget__button:hover {
-  transform: scale(1.08);
   background: color-mix(in srgb, var(--brand-navy), black 15%);
   border-color: color-mix(in srgb, var(--brand-navy), black 15%);
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .translate-widget__button:focus {
-  outline: 2px solid var(--brand-navy);
-  outline-offset: 3px;
+  outline: none;
 }
 
 /* Flag fills the entire button, scaled up to hide rectangular edges */
@@ -499,6 +503,7 @@ body {
   visibility: hidden;
   transform: translateY(8px);
   transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+  pointer-events: auto; /* Re-enable clicks on confirm dialog */
 }
 
 .translate-widget__confirm[data-visible="true"] {
