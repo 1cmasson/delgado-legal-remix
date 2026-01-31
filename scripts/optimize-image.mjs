@@ -5,17 +5,15 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 
-const inputPath = path.join(projectRoot, 'public/images/uncompressed/Photo 9.jpg');
+const inputPath = path.join(projectRoot, 'public/images/uncompressed/Photo 10.jpg');
 const outputDir = path.join(projectRoot, 'public/images/backgrounds/testimonials');
 
 const sizes = [
-  { name: 'desktop', width: 1920 },
-  { name: 'tablet', width: 1024 },
   { name: 'mobile', width: 640 },
 ];
 
 async function optimizeImage() {
-  console.log('Optimizing Photo 9.jpg...\n');
+  console.log('Optimizing Photo 10.jpg for mobile...\n');
 
   for (const { name, width } of sizes) {
     const outputPath = path.join(outputDir, `testimonials-bg-${name}.webp`);

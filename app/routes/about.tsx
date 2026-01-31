@@ -36,23 +36,23 @@ export default function About() {
   return (
     <ScrollSnapContainer>
       {/* Hero Section */}
-      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <ScrollSection size="hero" className="!min-h-[300px] bg-gradient-to-br from-[#e8c87a] to-[#d4b068] text-accent-foreground">
         <DecorativeElement position="top-left" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
+          <ArtDecoCorner size={100} corner="top-left" color="var(--brand-navy)" />
         </DecorativeElement>
         <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={200} color="var(--brand-navy)" />
+          <Scales size={100} color="var(--brand-navy)" className="w-[70px] h-[70px] md:w-[100px] md:h-[100px]" />
         </DecorativeElement>
         <DecorativeElement position="bottom-left" opacity={0.25}>
           <Lines size={200} variant="diagonal" color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-right" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="bottom-right" color="var(--brand-gold)" />
+          <ArtDecoCorner size={100} corner="bottom-right" color="var(--brand-navy)" />
         </DecorativeElement>
         
         <div className="max-w-4xl mx-auto text-center">
           <SlideUpOnScroll>
-            <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
+            <Text as="span" size="sm" className="text-primary font-semibold uppercase tracking-widest mb-4 block">
               {t('about.hero.subtitle')}
             </Text>
           </SlideUpOnScroll>
@@ -64,7 +64,7 @@ export default function About() {
           </SlideUpOnScroll>
           
           <SlideUpOnScroll delay={200}>
-            <Text size="lg" muted className="max-w-2xl mx-auto">
+            <Text size="lg" className="max-w-2xl mx-auto text-primary/80">
               {t('about.hero.description')}
             </Text>
           </SlideUpOnScroll>

@@ -230,9 +230,14 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <section className="scroll-section min-h-screen flex items-center justify-center relative overflow-hidden" id="testimonials">
-        {/* Parallax Background */}
+        {/* Parallax Background - Mobile */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-scroll md:bg-fixed grayscale"
+          className="absolute inset-0 bg-cover bg-center grayscale md:hidden"
+          style={{ backgroundImage: "url('/images/backgrounds/testimonials/testimonials-bg-mobile.webp')" }}
+        />
+        {/* Parallax Background - Desktop */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed grayscale hidden md:block"
           style={{ backgroundImage: "url('/images/backgrounds/testimonials/testimonials-bg-desktop.webp')" }}
         />
         <div className="absolute inset-0 bg-muted/85" />

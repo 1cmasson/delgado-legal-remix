@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router';
+import { Spin as Hamburger } from 'hamburger-react';
 import { cn } from '~/lib/utils';
-import { Button } from '~/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '~/components/ui/sheet';
 import { useIsMobile } from '~/hooks/useMediaQuery';
 import { useTranslation } from '~/providers/TranslationProvider';
@@ -30,7 +30,7 @@ export function Header({ className }: HeaderProps) {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 w-full border-b border-border/40 bg-background',
+        'sticky top-0 z-[60] w-full border-b border-border/40 bg-background shadow-md',
         className
       )}
     >
@@ -77,24 +77,19 @@ export function Header({ className }: HeaderProps) {
         {/* Mobile Menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon" aria-label={t('common.openMenu')}>
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </Button>
+            <button
+              aria-label={mobileMenuOpen ? t('common.closeMenu') : t('common.openMenu')}
+              className="relative z-[60] p-1 -mr-2 text-foreground/80 hover:text-foreground transition-colors"
+            >
+              <Hamburger
+                toggled={mobileMenuOpen}
+                size={24}
+                direction="left"
+                rounded
+              />
+            </button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+          <SheetContent side="right" className="w-[300px] sm:w-[400px] border-l-4 border-l-[#E4BE72]" showCloseButton={false}>
             <nav className="flex flex-col gap-4 mt-8" aria-label="Mobile navigation">
               {navigation.map((item) => (
                 <Link
