@@ -211,7 +211,7 @@ export default function Home() {
               </SlideUpOnScroll>
             </div>
             <SlideUpOnScroll delay={200}>
-              <div className="aspect-video overflow-hidden shadow-2xl max-w-md mx-auto lg:max-w-lg">
+              <div className="aspect-video overflow-hidden shadow-2xl max-w-md mx-auto lg:max-w-lg rounded-lg">
                 <picture>
                   <source media="(max-width: 640px)" srcSet="/images/team/trusted-legal-attorney-mobile.webp" />
                   <source media="(max-width: 1024px)" srcSet="/images/team/trusted-legal-attorney-tablet.webp" />
