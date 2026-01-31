@@ -1,12 +1,15 @@
 import type { Route } from "./+types/about";
-import { ScrollSnapContainer, ScrollSection } from "~/components/layout";
+import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Scales, Column, Document, Lines, ArtDecoCorner } from "~/components/decorations";
+import { DecorativeElement, Scales, Column } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
+import { PageHero } from "~/components/shared/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Link } from "react-router";
 import { useTranslation } from "~/providers/TranslationProvider";
+import { Footer } from "~/components/shared/Footer";
+import { Target, Scale, Trophy, BookOpen, Handshake, Heart, type LucideIcon } from "lucide-react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -15,13 +18,13 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const valueKeys = [
-  { key: "clientCentric", icon: "🎯" },
-  { key: "integrity", icon: "⚖️" },
-  { key: "excellence", icon: "🏆" },
-  { key: "expertise", icon: "📚" },
-  { key: "personalized", icon: "🤝" },
-  { key: "community", icon: "❤️" },
+const valueKeys: { key: string; icon: LucideIcon }[] = [
+  { key: "clientCentric", icon: Target },
+  { key: "integrity", icon: Scale },
+  { key: "excellence", icon: Trophy },
+  { key: "expertise", icon: BookOpen },
+  { key: "personalized", icon: Handshake },
+  { key: "community", icon: Heart },
 ];
 
 const stats = [
@@ -34,65 +37,29 @@ export default function About() {
   const { t } = useTranslation();
 
   return (
-    <ScrollSnapContainer>
+    <>
       {/* Hero Section */}
-      <ScrollSection size="hero" className="!min-h-[300px] bg-gradient-to-br from-[#e8c87a] to-[#d4b068] text-accent-foreground">
-        <DecorativeElement position="top-left" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="top-left" color="var(--brand-navy)" />
-        </DecorativeElement>
-        <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={100} color="var(--brand-navy)" className="w-[70px] h-[70px] md:w-[100px] md:h-[100px]" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.25}>
-          <Lines size={200} variant="diagonal" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="bottom-right" color="var(--brand-navy)" />
-        </DecorativeElement>
-        
-        <div className="max-w-4xl mx-auto text-center">
-          <SlideUpOnScroll>
-            <Text as="span" size="sm" className="text-primary font-semibold uppercase tracking-widest mb-4 block">
-              {t('about.hero.subtitle')}
-            </Text>
-          </SlideUpOnScroll>
-          
-          <SlideUpOnScroll delay={100}>
-            <Heading as="h1" size="xl" className="mb-6">
-              {t('about.hero.title')}
-            </Heading>
-          </SlideUpOnScroll>
-          
-          <SlideUpOnScroll delay={200}>
-            <Text size="lg" className="max-w-2xl mx-auto text-primary/80">
-              {t('about.hero.description')}
-            </Text>
-          </SlideUpOnScroll>
-        </div>
-      </ScrollSection>
+      <PageHero
+        subtitleKey="about.hero.subtitle"
+        titleKey="about.hero.title"
+        descriptionKey="about.hero.description"
+        decoratorIcon={<Scales size={100} className="w-[70px] h-[70px] md:w-[100px] md:h-[100px]" />}
+        linesFlipped
+        linesOffset="left-[10%] bottom-[10px]"
+      />
 
       {/* Mission Section */}
-      <ScrollSection>
-        <DecorativeElement position="top-right" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="top-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="center-right" opacity={0.25}>
-          <Document size={175} color="var(--brand-navy)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="bottom-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        
+      <Section>
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <SlideUpOnScroll>
-              <div className="rounded-2xl overflow-hidden shadow-xl">
+              <div className="rounded-2xl overflow-hidden shadow-xl max-w-[50%] mx-auto">
                 <picture>
-                  <source media="(max-width: 640px)" srcSet="/images/team/team-together-mobile.webp" />
-                  <source media="(max-width: 1024px)" srcSet="/images/team/team-together-tablet.webp" />
+                  <source media="(max-width: 640px)" srcSet="/images/team/working-environment-mobile.webp" />
+                  <source media="(max-width: 1024px)" srcSet="/images/team/working-environment-tablet.webp" />
                   <img
-                    src="/images/team/team-together-desktop.webp"
-                    alt="Michael and Vanessa Delgado, attorneys at Delgado Legal P.A."
+                    src="/images/team/working-environment-desktop.webp"
+                    alt="Attorney consulting with client at Delgado Legal P.A."
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -128,20 +95,10 @@ export default function About() {
             </div>
           </div>
         </div>
-      </ScrollSection>
+      </Section>
 
       {/* Values Section */}
-      <ScrollSection background="muted" id="values">
-        <DecorativeElement position="top-left" opacity={0.25} className="animate-float">
-          <Column size={155} color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="top-right" opacity={0.55}>
-          <ArtDecoCorner size={90} corner="top-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.55}>
-          <ArtDecoCorner size={90} corner="bottom-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        
+      <Section background="muted" id="values">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <FadeInOnScroll>
@@ -161,7 +118,7 @@ export default function About() {
               <SlideUpOnScroll key={value.key} delay={100 + index * 75}>
                 <Card className="text-center h-full bg-background hover:shadow-md transition-shadow">
                   <CardHeader>
-                    <span className="text-4xl mb-2 block" aria-hidden="true">{value.icon}</span>
+                    <value.icon className="w-10 h-10 mx-auto mb-2 text-accent" aria-hidden="true" />
                     <CardTitle>{t(`about.values.items.${value.key}.title`)}</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -172,18 +129,15 @@ export default function About() {
             ))}
           </div>
         </div>
-      </ScrollSection>
+      </Section>
 
       {/* Meet Our Attorneys CTA Section */}
-      <ScrollSection id="team">
-        <DecorativeElement position="top-left" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="top-left" color="var(--brand-gold)" />
+      <Section background="accent-solid" id="team" size="compact">
+        <DecorativeElement position="center-left" opacity={0.25}>
+          <Column size={300} color="white" />
         </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={140} color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="bottom-left" color="var(--brand-gold)" />
+        <DecorativeElement position="center-right" opacity={0.25}>
+          <Column size={300} color="white" />
         </DecorativeElement>
         
         <div className="max-w-3xl mx-auto text-center">
@@ -198,17 +152,18 @@ export default function About() {
             </Heading>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={200}>
-            <Text muted className="max-w-2xl mx-auto mb-8">
+            <Text className="max-w-2xl mx-auto mb-8 text-gray-800">
               {t('about.team.description')}
             </Text>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={300}>
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90">
               <Link to="/attorneys">{t('about.team.cta')}</Link>
             </Button>
           </SlideUpOnScroll>
         </div>
-      </ScrollSection>
-    </ScrollSnapContainer>
+      </Section>
+      <Footer />
+    </>
   );
 }

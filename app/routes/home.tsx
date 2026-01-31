@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/home";
-import { ScrollSnapContainer, ScrollSection } from "~/components/layout";
+import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 import { SnowParticles } from "~/components/effects/SnowParticles";
 import { HeartsParticles } from "~/components/effects/HeartsParticles";
@@ -14,6 +14,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/com
 import { Button } from "~/components/ui/button";
 import { useTheme } from "~/providers/ThemeProvider";
 import { useTranslation } from "~/providers/TranslationProvider";
+import { Footer } from "~/components/shared/Footer";
 import { Home as HomeIcon, Shield, Building, ClipboardList, type LucideIcon } from "lucide-react";
 
 export function meta({}: Route.MetaArgs) {
@@ -73,9 +74,8 @@ export default function Home() {
       {showEffects && effect === 'fireworks' && <FireworksParticles />}
       {showEffects && effect === 'confetti' && <ConfettiParticles />}
       <HolidayGreetingModal holiday={holiday} />
-      <ScrollSnapContainer>
       {/* Hero Section */}
-      <section className="scroll-section h-screen max-h-[700px] md:h-auto md:max-h-none md:min-h-screen flex items-center justify-center relative overflow-hidden bg-primary">
+      <section className="py-16 md:py-24 flex items-center justify-center relative overflow-hidden bg-primary">
         {/* Background Image - Containerized */}
         <div className="absolute inset-0 flex justify-center z-0">
           <div className="relative w-full max-w-7xl h-full">
@@ -125,7 +125,7 @@ export default function Home() {
       </section>
 
       {/* Practice Areas Section */}
-      <ScrollSection background="muted" id="practices">
+      <Section background="muted" id="practices">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <FadeInOnScroll>
@@ -173,10 +173,10 @@ export default function Home() {
             </div>
           </SlideUpOnScroll>
         </div>
-      </ScrollSection>
+      </Section>
 
       {/* About Section */}
-      <ScrollSection id="about">
+      <Section id="about">
         <DecorativeElement position="top-left" opacity={0.25} className="animate-float">
           <Lines size={250} variant="diagonal" color="var(--brand-gold)" />
         </DecorativeElement>
@@ -226,10 +226,10 @@ export default function Home() {
             </SlideUpOnScroll>
           </div>
         </div>
-      </ScrollSection>
+      </Section>
 
       {/* Testimonials Section */}
-      <section className="scroll-section min-h-screen flex items-center justify-center relative overflow-hidden" id="testimonials">
+      <section className="py-16 md:py-24 flex items-center justify-center relative overflow-hidden" id="testimonials">
         {/* Parallax Background - Mobile */}
         <div 
           className="absolute inset-0 bg-cover bg-center grayscale md:hidden"
@@ -304,7 +304,7 @@ export default function Home() {
       </section>
 
       {/* CTA Banner */}
-      <ScrollSection background="accent-solid" size="compact">
+      <Section background="accent-solid" size="compact">
         <DecorativeElement position="center-left" opacity={0.25}>
           <Column size={300} color="white" />
         </DecorativeElement>
@@ -329,8 +329,8 @@ export default function Home() {
             </Button>
           </SlideUpOnScroll>
         </div>
-      </ScrollSection>
-    </ScrollSnapContainer>
+      </Section>
+      <Footer />
     </>
   );
 }

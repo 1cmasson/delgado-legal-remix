@@ -1,13 +1,15 @@
 import type { Route } from "./+types/contact";
-import { ScrollSnapContainer, ScrollSection } from "~/components/layout";
+import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 import { DecorativeElement, Scales, Document, Lines, ArtDecoCorner } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
+import { PageHero } from "~/components/shared/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { useTranslation } from "~/providers/TranslationProvider";
+import { Footer } from "~/components/shared/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -56,45 +58,17 @@ export default function Contact() {
   const { t } = useTranslation();
 
   return (
-    <ScrollSnapContainer>
+    <>
       {/* Hero Section */}
-      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <DecorativeElement position="top-left" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Document size={175} color="var(--brand-navy)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.25}>
-          <Lines size={180} variant="diagonal" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="bottom-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-        
-        <div className="max-w-4xl mx-auto text-center">
-          <SlideUpOnScroll>
-            <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              {t('contact.hero.subtitle')}
-            </Text>
-          </SlideUpOnScroll>
-          
-          <SlideUpOnScroll delay={100}>
-            <Heading as="h1" size="xl" className="mb-6">
-              {t('contact.hero.title')}
-            </Heading>
-          </SlideUpOnScroll>
-          
-          <SlideUpOnScroll delay={200}>
-            <Text size="lg" muted className="max-w-2xl mx-auto">
-              {t('contact.hero.description')}
-            </Text>
-          </SlideUpOnScroll>
-        </div>
-      </ScrollSection>
+      <PageHero
+        subtitleKey="contact.hero.subtitle"
+        titleKey="contact.hero.title"
+        descriptionKey="contact.hero.description"
+        decoratorIcon={<Document size={175} />}
+      />
 
       {/* Contact Form Section */}
-      <ScrollSection>
+      <Section>
         <DecorativeElement position="top-left" opacity={0.55}>
           <ArtDecoCorner size={90} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
@@ -291,7 +265,8 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </ScrollSection>
-    </ScrollSnapContainer>
+      </Section>
+      <Footer />
+    </>
   );
 }

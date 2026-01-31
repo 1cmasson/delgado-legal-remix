@@ -1,12 +1,14 @@
 import type { Route } from "./+types/testimonials";
-import { ScrollSnapContainer, ScrollSection } from "~/components/layout";
+import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 import { DecorativeElement, Scales, Column, Lines, ArtDecoCorner } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
+import { PageHero } from "~/components/shared/PageHero";
 import { Card, CardContent } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Link } from "react-router";
 import { useTranslation } from "~/providers/TranslationProvider";
+import { Footer } from "~/components/shared/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -94,45 +96,17 @@ export default function Testimonials() {
   const { t } = useTranslation();
 
   return (
-    <ScrollSnapContainer>
+    <>
       {/* Hero Section */}
-      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <DecorativeElement position="top-left" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={200} color="var(--brand-navy)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.25}>
-          <Lines size={200} variant="diagonal" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="bottom-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-        
-        <div className="max-w-4xl mx-auto text-center">
-          <SlideUpOnScroll>
-            <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              {t('testimonials.hero.subtitle')}
-            </Text>
-          </SlideUpOnScroll>
-          
-          <SlideUpOnScroll delay={100}>
-            <Heading as="h1" size="xl" className="mb-6">
-              {t('testimonials.hero.title')}
-            </Heading>
-          </SlideUpOnScroll>
-          
-          <SlideUpOnScroll delay={200}>
-            <Text size="lg" muted className="max-w-2xl mx-auto">
-              {t('testimonials.hero.description')}
-            </Text>
-          </SlideUpOnScroll>
-        </div>
-      </ScrollSection>
+      <PageHero
+        subtitleKey="testimonials.hero.subtitle"
+        titleKey="testimonials.hero.title"
+        descriptionKey="testimonials.hero.description"
+        decoratorIcon={<Scales size={200} />}
+      />
 
       {/* Testimonials Grid Section */}
-      <ScrollSection>
+      <Section>
         <DecorativeElement position="top-left" opacity={0.55}>
           <ArtDecoCorner size={80} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
@@ -176,10 +150,10 @@ export default function Testimonials() {
             ))}
           </div>
         </div>
-      </ScrollSection>
+      </Section>
 
       {/* CTA Section */}
-      <ScrollSection background="primary">
+      <Section background="primary">
         <DecorativeElement position="top-left" opacity={0.60}>
           <ArtDecoCorner size={100} corner="top-left" color="white" />
         </DecorativeElement>
@@ -207,7 +181,8 @@ export default function Testimonials() {
             </Button>
           </SlideUpOnScroll>
         </div>
-      </ScrollSection>
-    </ScrollSnapContainer>
+      </Section>
+      <Footer />
+    </>
   );
 }

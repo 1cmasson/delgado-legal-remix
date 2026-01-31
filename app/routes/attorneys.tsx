@@ -1,11 +1,13 @@
 import type { Route } from "./+types/attorneys";
-import { ScrollSnapContainer, ScrollSection } from "~/components/layout";
+import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Scales, Column, Document, Lines, GoldRing, ArtDecoCorner } from "~/components/decorations";
+import { DecorativeElement, Scales, Column, Document, Lines, GoldRing, ArtDecoCorner, Gavel } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
+import { PageHero } from "~/components/shared/PageHero";
 import { Button } from "~/components/ui/button";
 import { Link } from "react-router";
 import { useTranslation } from "~/providers/TranslationProvider";
+import { Footer } from "~/components/shared/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -80,55 +82,20 @@ export default function Attorneys() {
   const { t } = useTranslation();
 
   return (
-    <ScrollSnapContainer>
+    <>
       {/* Hero Section */}
-      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <DecorativeElement position="top-left" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={200} color="var(--brand-navy)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.25}>
-          <Lines size={200} variant="diagonal" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="bottom-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-
-        <div className="max-w-4xl mx-auto text-center">
-          <SlideUpOnScroll>
-            <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              {t('attorneys.hero.subtitle')}
-            </Text>
-          </SlideUpOnScroll>
-
-          <SlideUpOnScroll delay={100}>
-            <Heading as="h1" size="xl" className="mb-6">
-              {t('attorneys.hero.title')}
-            </Heading>
-          </SlideUpOnScroll>
-
-          <SlideUpOnScroll delay={200}>
-            <Text size="lg" muted className="max-w-2xl mx-auto">
-              {t('attorneys.hero.description')}
-            </Text>
-          </SlideUpOnScroll>
-        </div>
-      </ScrollSection>
+      <PageHero
+        subtitleKey="attorneys.hero.subtitle"
+        titleKey="attorneys.hero.title"
+        descriptionKey="attorneys.hero.description"
+        decoratorIcon={<Document size={120} />}
+        decoratorIconOffset="left-16 bottom-8"
+        linesSize={140}
+        swapDecoratorPositions
+      />
 
       {/* Vanessa Delgado Section */}
-      <ScrollSection id="vanessa">
-        <DecorativeElement position="top-left" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="top-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="center-right" opacity={0.25}>
-          <Document size={175} color="var(--brand-navy)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="bottom-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-
+      <Section id="vanessa">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <SlideUpOnScroll>
@@ -179,20 +146,10 @@ export default function Attorneys() {
             </div>
           </div>
         </div>
-      </ScrollSection>
+      </Section>
 
       {/* Michael Delgado Section */}
-      <ScrollSection background="muted" id="michael">
-        <DecorativeElement position="top-left" opacity={0.25} className="animate-float">
-          <Column size={155} color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="top-right" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="top-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="bottom-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-
+      <Section background="muted" id="michael">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="order-2 lg:order-1">
@@ -255,18 +212,18 @@ export default function Attorneys() {
             </SlideUpOnScroll>
           </div>
         </div>
-      </ScrollSection>
+      </Section>
 
       {/* Together Section */}
-      <ScrollSection id="together">
+      <Section id="together">
         <DecorativeElement position="top-left" opacity={0.55}>
           <ArtDecoCorner size={90} corner="top-left" color="var(--brand-gold)" />
         </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.55} className="animate-float-slow">
-          <Scales size={140} color="var(--brand-gold)" />
+        <DecorativeElement position="bottom-left" opacity={0.55} className="animate-float-slow">
+          <Gavel size={140} color="var(--brand-gold)" />
         </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.55}>
-          <ArtDecoCorner size={90} corner="bottom-left" color="var(--brand-gold)" />
+        <DecorativeElement position="bottom-right" opacity={0.55}>
+          <ArtDecoCorner size={90} corner="bottom-right" color="var(--brand-gold)" />
         </DecorativeElement>
 
         <div className="max-w-5xl mx-auto text-center">
@@ -321,7 +278,8 @@ export default function Attorneys() {
             </Button>
           </SlideUpOnScroll>
         </div>
-      </ScrollSection>
-    </ScrollSnapContainer>
+      </Section>
+      <Footer />
+    </>
   );
 }

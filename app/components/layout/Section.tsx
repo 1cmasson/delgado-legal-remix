@@ -1,6 +1,6 @@
 import { cn } from "~/lib/utils";
 
-interface ScrollSectionProps {
+interface SectionProps {
   children: React.ReactNode;
   className?: string;
   background?: "default" | "muted" | "primary" | "accent" | "accent-solid";
@@ -16,24 +16,30 @@ const backgroundClasses = {
   "accent-solid": "bg-accent text-accent-foreground",
 };
 
-export function ScrollSection({
+const sizeClasses = {
+  default: "py-16 md:py-24",
+  compact: "py-12 md:py-16",
+  hero: "py-12 md:py-16",
+};
+
+export function Section({
   children,
   className,
   background = "default",
   id,
   size = "default",
-}: ScrollSectionProps) {
+}: SectionProps) {
   return (
     <section
       id={id}
       className={cn(
-        "scroll-section flex items-center justify-center relative overflow-hidden",
-        size === "default" ? "min-h-screen" : size === "hero" ? "min-h-[400px]" : "min-h-[50vh]",
+        "relative overflow-hidden",
+        sizeClasses[size],
         backgroundClasses[background],
         className
       )}
     >
-      <div className="container mx-auto px-4 py-10 relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         {children}
       </div>
     </section>

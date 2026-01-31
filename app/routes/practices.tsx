@@ -1,12 +1,14 @@
 import type { Route } from "./+types/practices";
-import { ScrollSnapContainer, ScrollSection } from "~/components/layout";
+import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Scales, Document, Column, Gavel, Lines, ArtDecoCorner } from "~/components/decorations";
+import { DecorativeElement, Column, Gavel } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
+import { PageHero } from "~/components/shared/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Link } from "react-router";
 import { useTranslation } from "~/providers/TranslationProvider";
+import { Footer } from "~/components/shared/Footer";
 import { Home as HomeIcon, Shield, Building, ClipboardList, ScrollText, type LucideIcon } from "lucide-react";
 
 export function meta({}: Route.MetaArgs) {
@@ -49,86 +51,29 @@ const practiceAreaKeys: { id: string; key: string; icon: LucideIcon; serviceKeys
   },
 ];
 
-const decorativeElements = [
-  { Component: Scales, position: "top-right" as const },
-  { Component: Document, position: "center-left" as const },
-  { Component: Column, position: "bottom-right" as const },
-  { Component: Gavel, position: "top-left" as const },
-  { Component: Scales, position: "center-right" as const },
-];
-
 export default function Practices() {
   const { t } = useTranslation();
 
   return (
-    <ScrollSnapContainer>
+    <>
       {/* Hero Section */}
-      <ScrollSection size="hero" className="bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <DecorativeElement position="top-left" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="top-right" opacity={0.55} className="animate-float-slow">
-          <Gavel size={175} color="var(--brand-navy)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.25}>
-          <Lines size={200} variant="diagonal" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="bottom-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-        
-        <div className="max-w-4xl mx-auto text-center">
-          <SlideUpOnScroll>
-            <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
-              {t('practices.hero.subtitle')}
-            </Text>
-          </SlideUpOnScroll>
-          
-          <SlideUpOnScroll delay={100}>
-            <Heading as="h1" size="xl" className="mb-6">
-              {t('practices.hero.title')}
-            </Heading>
-          </SlideUpOnScroll>
-          
-          <SlideUpOnScroll delay={200}>
-            <Text size="lg" muted className="max-w-2xl mx-auto">
-              {t('practices.hero.description')}
-            </Text>
-          </SlideUpOnScroll>
-        </div>
-      </ScrollSection>
+      <PageHero
+        subtitleKey="practices.hero.subtitle"
+        titleKey="practices.hero.title"
+        descriptionKey="practices.hero.description"
+        decoratorIcon={<Gavel size={175} />}
+      />
 
       {/* Practice Area Sections */}
       {practiceAreaKeys.map((area, index) => {
-        const decoration = decorativeElements[index % decorativeElements.length];
         const isEven = index % 2 === 0;
         
         return (
-          <ScrollSection
+          <Section
             key={area.id}
             id={area.id}
             background={isEven ? "default" : "muted"}
           >
-            <DecorativeElement 
-              position="top-left" 
-              opacity={0.55}
-            >
-              <ArtDecoCorner size={80} corner="top-left" color={isEven ? "var(--brand-gold)" : "var(--brand-gold)"} />
-            </DecorativeElement>
-            <DecorativeElement 
-              position={decoration.position} 
-              opacity={0.25} 
-              className={index % 2 === 0 ? "animate-float" : "animate-float-slow"}
-            >
-              <decoration.Component size={140} color={isEven ? "var(--brand-navy)" : "var(--brand-gold)"} />
-            </DecorativeElement>
-            <DecorativeElement 
-              position="bottom-right" 
-              opacity={0.55}
-            >
-              <ArtDecoCorner size={80} corner="bottom-right" color={isEven ? "var(--brand-gold)" : "var(--brand-gold)"} />
-            </DecorativeElement>
-            
             <div className="max-w-6xl mx-auto">
               <div className={`grid lg:grid-cols-2 gap-12 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                 <div className={!isEven ? 'lg:col-start-2' : ''}>
@@ -171,23 +116,17 @@ export default function Practices() {
                 </SlideUpOnScroll>
               </div>
             </div>
-          </ScrollSection>
+          </Section>
         );
       })}
 
       {/* CTA Section */}
-      <ScrollSection background="primary">
-        <DecorativeElement position="top-left" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="top-left" color="white" />
-        </DecorativeElement>
+      <Section background="accent-solid" size="compact">
         <DecorativeElement position="center-left" opacity={0.25}>
-          <Column size={200} color="white" />
+          <Column size={300} color="white" />
         </DecorativeElement>
         <DecorativeElement position="center-right" opacity={0.25}>
-          <Column size={200} color="white" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.60}>
-          <ArtDecoCorner size={100} corner="bottom-right" color="white" />
+          <Column size={300} color="white" />
         </DecorativeElement>
         
         <div className="max-w-3xl mx-auto text-center">
@@ -197,17 +136,18 @@ export default function Practices() {
             </Heading>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={100}>
-            <Text className="mb-10 text-primary-foreground/80 text-lg">
+            <Text className="mb-10 text-accent-foreground/80 text-lg">
               {t('practices.cta.description')}
             </Text>
           </SlideUpOnScroll>
           <SlideUpOnScroll delay={200}>
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
               <Link to="/contact">{t('practices.cta.button')}</Link>
             </Button>
           </SlideUpOnScroll>
         </div>
-      </ScrollSection>
-    </ScrollSnapContainer>
+      </Section>
+      <Footer />
+    </>
   );
 }

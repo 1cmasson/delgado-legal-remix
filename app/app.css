@@ -145,27 +145,6 @@ body {
   }
 }
 
-/* Scroll Container Styles */
-.scroll-snap-container {
-  scroll-behavior: smooth;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .scroll-section {
-    min-height: auto;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .scroll-snap-container {
-    scroll-behavior: auto;
-  }
-}
-
 /* Decorative element animations */
 @keyframes float {
   0%, 100% {
