@@ -232,7 +232,7 @@ export default function Home() {
       <section className="scroll-section min-h-screen flex items-center justify-center relative overflow-hidden" id="testimonials">
         {/* Parallax Background */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed grayscale"
+          className="absolute inset-0 bg-cover bg-center bg-scroll md:bg-fixed grayscale"
           style={{ backgroundImage: "url('/images/backgrounds/testimonials/testimonials-bg-desktop.webp')" }}
         />
         <div className="absolute inset-0 bg-muted/85" />
