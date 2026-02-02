@@ -30,7 +30,7 @@ export function Header({ className }: HeaderProps) {
   return (
     <header
       className={cn(
-        'sticky top-0 z-[60] w-full border-b border-border/40 bg-background shadow-md',
+        'sticky top-0 z-[100] w-full border-b border-border/40 bg-background shadow-md',
         className
       )}
     >
@@ -75,21 +75,24 @@ export function Header({ className }: HeaderProps) {
         </div>
 
         {/* Mobile Menu */}
-        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-          <SheetTrigger asChild className="lg:hidden">
-            <button
-              aria-label={mobileMenuOpen ? t('common.closeMenu') : t('common.openMenu')}
-              className="relative z-[60] p-1 -mr-2 text-foreground/80 hover:text-foreground transition-colors"
-            >
-              <Hamburger
-                toggled={mobileMenuOpen}
-                size={24}
-                direction="left"
-                rounded
-              />
-            </button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px] border-l-4 border-l-[#E4BE72]" showCloseButton={false}>
+        <div className="lg:hidden relative z-[110] -mr-2 text-foreground/80 hover:text-foreground transition-colors">
+          <Hamburger
+            toggled={mobileMenuOpen}
+            toggle={setMobileMenuOpen}
+            size={24}
+            direction="left"
+            rounded
+            label={mobileMenuOpen ? t('common.closeMenu') : t('common.openMenu')}
+          />
+        </div>
+        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen} modal={false}>
+          <SheetContent 
+            side="right" 
+            className="w-[300px] sm:w-[400px] border-l-4 border-l-[#E4BE72]" 
+            showCloseButton={false}
+            onInteractOutside={(e) => e.preventDefault()}
+            onPointerDownOutside={(e) => e.preventDefault()}
+          >
             <nav className="flex flex-col gap-4 mt-20" aria-label="Mobile navigation">
               {navigation.map((item) => (
                 <Link

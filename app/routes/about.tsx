@@ -51,7 +51,7 @@ export default function About() {
       {/* Mission Section */}
       <Section className="overflow-hidden">
         <DecorativeElement position="top-right" opacity={0.4} className="top-[45%] lg:top-0">
-          <Document size={160} className="text-accent" />
+          <Document size={160} className="text-accent" animated />
         </DecorativeElement>
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">

@@ -8,7 +8,7 @@ import { HeartsParticles } from "~/components/effects/HeartsParticles";
 import { FireworksParticles } from "~/components/effects/FireworksParticles";
 import { ConfettiParticles } from "~/components/effects/ConfettiParticles";
 import { HolidayGreetingModal } from "~/components/holiday/HolidayGreetingModal";
-import { DecorativeElement, Lines, ArtDecoCorner } from "~/components/decorations";
+import { DecorativeElement, Lines, ArtDecoCorner, Gavel } from "~/components/decorations";
 import { CTABanner } from "~/components/shared/CTABanner";
 import { Heading, Text } from "~/components/shared/Typography";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
@@ -127,6 +127,10 @@ export default function Home() {
 
       {/* Practice Areas Section */}
       <Section background="muted" id="practices">
+        <DecorativeElement position="top-right" opacity={0.4} className="animate-float">
+          <Gavel size={200} color="var(--brand-gold)" />
+        </DecorativeElement>
+        
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <FadeInOnScroll>
