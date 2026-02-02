@@ -47,6 +47,13 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap",
   },
+  // Favicons
+  { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+  { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+  { rel: "icon", href: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+  { rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+  { rel: "manifest", href: "/site.webmanifest" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
