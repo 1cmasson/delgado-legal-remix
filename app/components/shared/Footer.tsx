@@ -18,7 +18,7 @@ const footerLinks = {
   contact: [
     { name: '(786) 762-2389', href: 'tel:+17867622389' },
     { name: 'michael@delgadolegalpa.com', href: 'mailto:michael@delgadolegalpa.com' },
-    { name: 'Miami Lakes, FL', href: '/contact#location' },
+    { name: '6500 Cow Pen Rd STE 304,\nMiami Lakes, FL\n33014', href: '/contact#location' },
   ],
 };
 
@@ -111,7 +111,7 @@ export function Footer({ className }: FooterProps) {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
+                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors whitespace-pre-line"
                   >
                     {link.name}
                   </a>

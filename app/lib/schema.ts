@@ -11,7 +11,7 @@ export const businessInfo = {
   phoneE164: "+17867622389",
   email: "michael@delgadolegalpa.com",
   address: {
-    streetAddress: "6625 Miami Lakes Dr E #318",
+    streetAddress: "6500 Cow Pen Rd STE 304",
     addressLocality: "Miami Lakes",
     addressRegion: "FL",
     postalCode: "33014",

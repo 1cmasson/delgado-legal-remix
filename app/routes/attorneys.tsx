@@ -231,14 +231,14 @@ export default function Attorneys() {
           opacity={0.55}
           className="animate-float-slow mt-4 mr-4 md:mt-6 md:mr-6 lg:mt-8 lg:mr-8"
         >
-          <Gavel size={140} color="var(--brand-gold)" />
+          <Scales size={140} color="var(--brand-gold)" />
         </DecorativeElement>
         <DecorativeElement
           position="bottom-left"
           opacity={0.55}
           className="hidden lg:block animate-float-slow mb-4 ml-4 lg:mb-8 lg:ml-8"
         >
-          <Scales size={140} color="var(--brand-gold)" />
+          <Gavel size={140} color="var(--brand-gold)" />
         </DecorativeElement>
 
         <div className="max-w-5xl mx-auto text-center">
