@@ -27,13 +27,13 @@ export const meta: Route.MetaFunction = () => [
   { name: "description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more." },
   { property: "og:title", content: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
   { property: "og:description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more." },
-  { property: "og:image", content: `${SITE_URL}/og-image.png` },
+  { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
   { property: "og:url", content: SITE_URL },
   { property: "og:type", content: "website" },
   { name: "twitter:card", content: "summary_large_image" },
   { name: "twitter:title", content: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
   { name: "twitter:description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL." },
-  { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
+  { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
 ];
 
 export const links: Route.LinksFunction = () => [
