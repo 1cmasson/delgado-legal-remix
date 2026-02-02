@@ -40,11 +40,23 @@ export function Footer({ className }: FooterProps) {
           {/* Brand Column */}
           <div className="space-y-4">
             <Link to="/" aria-label="Delgado Legal - Home">
-              <img
-                src="/images/logos/white-long-logo.svg"
-                alt="Delgado Legal"
-                className="h-12 w-auto"
-              />
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcSet="/images/logos/footer-logo-desktop.webp"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/images/logos/footer-logo-tablet.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="/images/logos/footer-logo-mobile.webp"
+                  alt="Delgado Legal"
+                  className="h-16 w-auto"
+                />
+              </picture>
             </Link>
             <p className="text-sm text-primary-foreground/80 max-w-xs">
               {t('footer.tagline')}

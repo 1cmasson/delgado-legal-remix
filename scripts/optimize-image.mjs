@@ -5,18 +5,18 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 
-const inputPath = path.join(projectRoot, 'public/images/uncompressed/Photo 10.jpg');
-const outputDir = path.join(projectRoot, 'public/images/backgrounds/testimonials');
+const inputPath = path.join(projectRoot, 'public/images/uncompressed/mobile-background.png');
+const outputDir = path.join(projectRoot, 'public/images/backgrounds/hero');
 
 const sizes = [
   { name: 'mobile', width: 640 },
 ];
 
 async function optimizeImage() {
-  console.log('Optimizing Photo 10.jpg for mobile...\n');
+  console.log('Optimizing mobile-background.png for mobile...\n');
 
   for (const { name, width } of sizes) {
-    const outputPath = path.join(outputDir, `testimonials-bg-${name}.webp`);
+    const outputPath = path.join(outputDir, `hero-${name}.webp`);
     
     await sharp(inputPath)
       .resize(width, null, { withoutEnlargement: true })

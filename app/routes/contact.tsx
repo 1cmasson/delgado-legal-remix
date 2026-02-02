@@ -144,7 +144,7 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <SlideUpOnScroll>
-              <Card className="h-full">
+              <Card>
                 <CardHeader>
                   <CardTitle>{t('contact.form.title')}</CardTitle>
                   <Text size="sm" muted>

@@ -76,7 +76,7 @@ export default function Home() {
       {showEffects && effect === 'confetti' && <ConfettiParticles />}
       <HolidayGreetingModal holiday={holiday} />
       {/* Hero Section */}
-      <section className="py-16 md:py-24 flex items-center justify-center relative overflow-hidden bg-primary">
+      <section className="min-h-[900px] md:min-h-0 md:py-24 flex items-center justify-center relative overflow-hidden bg-primary">
         {/* Background Image - Containerized */}
         <div className="absolute inset-0 flex justify-center z-0">
           <div className="relative w-full max-w-7xl h-full">

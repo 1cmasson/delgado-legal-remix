@@ -1,7 +1,7 @@
 import type { Route } from "./+types/about";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Column } from "~/components/decorations";
+import { DecorativeElement, Column, Document } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
 import { PageHero } from "~/components/shared/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -29,12 +29,6 @@ const valueKeys: { key: string; icon: LucideIcon }[] = [
   { key: "community", icon: Heart },
 ];
 
-const stats = [
-  { value: "100+", labelKey: "about.stats.cases" },
-  { value: "15+", labelKey: "about.stats.years" },
-  { value: "5", labelKey: "about.stats.practiceAreas" },
-];
-
 export default function About() {
   const { t } = useTranslation();
 
@@ -55,7 +49,10 @@ export default function About() {
       />
 
       {/* Mission Section */}
-      <Section>
+      <Section className="overflow-hidden">
+        <DecorativeElement position="top-right" opacity={0.4} className="top-[45%] lg:top-0">
+          <Document size={160} className="text-accent" />
+        </DecorativeElement>
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <SlideUpOnScroll>
@@ -66,7 +63,7 @@ export default function About() {
                   <img
                     src="/images/team/working-environment-desktop.webp"
                     alt="Attorney consulting with client at Delgado Legal P.A."
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover grayscale"
                     loading="lazy"
                   />
                 </picture>
@@ -88,16 +85,6 @@ export default function About() {
                   {t('about.mission.description2')}
                 </Text>
               </SlideUpOnScroll>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              {stats.map((stat, index) => (
-                <SlideUpOnScroll key={stat.labelKey} delay={100 + index * 100}>
-                  <div className="text-center">
-                    <Text className="text-5xl font-bold text-accent">{stat.value}</Text>
-                    <Text size="sm" muted className="mt-3">{t(stat.labelKey)}</Text>
-                  </div>
-                </SlideUpOnScroll>
-              ))}
             </div>
           </div>
         </div>

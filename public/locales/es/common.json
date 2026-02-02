@@ -450,5 +450,97 @@
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
     "copyright": "© {year} Delgado Legal. Todos los derechos reservados."
+  },
+  "privacy": {
+    "hero": {
+      "subtitle": "Legal",
+      "title": "Política de Privacidad",
+      "description": "Su privacidad es importante para nosotros. Esta política explica cómo recopilamos, usamos y protegemos su información."
+    },
+    "sections": {
+      "collection": {
+        "title": "Información que Recopilamos",
+        "content": "Cuando utiliza nuestro formulario de contacto, recopilamos la información que proporciona, incluyendo su nombre, dirección de correo electrónico, número de teléfono (si lo proporciona) y el contenido de su mensaje. No recopilamos información automáticamente más allá de los registros estándar del servidor."
+      },
+      "use": {
+        "title": "Cómo Usamos Su Información",
+        "content": "Utilizamos la información que proporciona únicamente para responder a sus consultas y comunicarnos con usted sobre nuestros servicios legales. No utilizamos su información con fines de marketing a menos que usted consienta explícitamente."
+      },
+      "protection": {
+        "title": "Cómo Protegemos Su Información",
+        "content": "Implementamos medidas de seguridad apropiadas para proteger su información personal contra acceso no autorizado, alteración, divulgación o destrucción. Su información se almacena de forma segura y solo el personal autorizado tiene acceso a ella."
+      },
+      "sharing": {
+        "title": "Compartir Información",
+        "content": "No vendemos, intercambiamos ni transferimos de otra manera su información personal a terceros. Solo podemos compartir información cuando lo exija la ley o para proteger nuestros derechos."
+      },
+      "cookies": {
+        "title": "Cookies y Seguimiento",
+        "content": "Nuestro sitio web puede utilizar cookies esenciales para garantizar su correcto funcionamiento. No utilizamos cookies con fines publicitarios o de seguimiento."
+      },
+      "rights": {
+        "title": "Sus Derechos",
+        "content": "Usted tiene derecho a solicitar acceso, corrección o eliminación de su información personal. Para ejercer estos derechos, contáctenos utilizando la información proporcionada a continuación."
+      },
+      "changes": {
+        "title": "Cambios a Esta Política",
+        "content": "Podemos actualizar esta Política de Privacidad de vez en cuando. Cualquier cambio se publicará en esta página con una fecha de vigencia actualizada."
+      },
+      "contact": {
+        "title": "Contáctenos",
+        "content": "Si tiene preguntas sobre esta Política de Privacidad o desea ejercer sus derechos de privacidad, contáctenos en michael@delgadolegalpa.com o llame al (786) 762-2389."
+      }
+    },
+    "lastUpdated": "Última actualización: Febrero 2026"
+  },
+  "terms": {
+    "hero": {
+      "subtitle": "Legal",
+      "title": "Términos de Servicio",
+      "description": "Por favor lea estos términos cuidadosamente antes de usar nuestro sitio web."
+    },
+    "sections": {
+      "acceptance": {
+        "title": "Aceptación de Términos",
+        "content": "Al acceder y utilizar el sitio web de Delgado Legal, P.A., usted acepta y acuerda estar sujeto a estos Términos de Servicio. Si no está de acuerdo con estos términos, por favor no utilice nuestro sitio web."
+      },
+      "services": {
+        "title": "Descripción de Servicios",
+        "content": "Este sitio web proporciona información general sobre Delgado Legal, P.A. y nuestros servicios legales. El sitio web incluye un formulario de contacto que le permite enviar consultas a nuestra firma."
+      },
+      "noAttorneyClient": {
+        "title": "Sin Relación Abogado-Cliente",
+        "content": "El uso de este sitio web o el envío de un formulario de contacto no crea una relación abogado-cliente. Una relación abogado-cliente solo se establece mediante una carta de compromiso firmada. La información enviada a través del formulario de contacto no es confidencial hasta que se establezca una relación abogado-cliente."
+      },
+      "intellectualProperty": {
+        "title": "Propiedad Intelectual",
+        "content": "Todo el contenido de este sitio web, incluyendo texto, gráficos, logotipos e imágenes, es propiedad de Delgado Legal, P.A. y está protegido por las leyes de derechos de autor y marcas registradas. No puede reproducir, distribuir ni usar ningún contenido sin nuestro permiso por escrito."
+      },
+      "userConduct": {
+        "title": "Conducta del Usuario",
+        "content": "Usted acepta utilizar este sitio web solo para fines legales. No puede usar el sitio web de ninguna manera que pueda dañar, deshabilitar o perjudicar el sitio web o interferir con el uso del sitio web por parte de cualquier otra persona."
+      },
+      "disclaimer": {
+        "title": "Descargo de Responsabilidad",
+        "content": "La información en este sitio web se proporciona solo con fines informativos generales y no constituye asesoramiento legal. No debe actuar ni confiar en ninguna información de este sitio web sin buscar el consejo de un abogado con licencia."
+      },
+      "limitation": {
+        "title": "Limitación de Responsabilidad",
+        "content": "Delgado Legal, P.A. no será responsable de ningún daño que surja de su uso de este sitio web o de cualquier información proporcionada en este sitio web. Esto incluye daños directos, indirectos, incidentales, consecuentes o punitivos."
+      },
+      "governing": {
+        "title": "Ley Aplicable",
+        "content": "Estos Términos de Servicio se rigen e interpretan de acuerdo con las leyes del Estado de Florida, sin tener en cuenta sus disposiciones sobre conflictos de leyes."
+      },
+      "changes": {
+        "title": "Cambios a los Términos",
+        "content": "Nos reservamos el derecho de modificar estos Términos de Servicio en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web. Su uso continuado del sitio web constituye la aceptación de los términos modificados."
+      },
+      "contact": {
+        "title": "Contáctenos",
+        "content": "Si tiene preguntas sobre estos Términos de Servicio, contáctenos en michael@delgadolegalpa.com o llame al (786) 762-2389."
+      }
+    },
+    "lastUpdated": "Última actualización: Febrero 2026"
   }
 }

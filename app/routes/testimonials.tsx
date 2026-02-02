@@ -1,7 +1,7 @@
 import type { Route } from "./+types/testimonials";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, ArtDecoCorner } from "~/components/decorations";
+
 import { CTABanner } from "~/components/shared/CTABanner";
 import { Heading, Text } from "~/components/shared/Typography";
 import { PageHero } from "~/components/shared/PageHero";
@@ -69,13 +69,6 @@ export default function Testimonials() {
 
       {/* Testimonials Grid Section */}
       <Section>
-        <DecorativeElement position="top-left" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="top-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="bottom-right" color="var(--brand-gold)" />
-        </DecorativeElement>
-        
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => {
