@@ -1,6 +1,6 @@
 // Centralized Schema.org structured data for Delgado Legal P.A.
 
-export const SITE_URL = "https://silly-gaufre-e5b859.netlify.app";
+export const SITE_URL = "https://delgadolegalpa.com";
 
 export const businessInfo = {
   name: "Delgado Legal P.A.",
