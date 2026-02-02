@@ -1,5 +1,4 @@
 import type { Route } from "./+types/testimonials";
-import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 
 import { CTABanner } from "~/components/shared/CTABanner";
@@ -68,48 +67,62 @@ export default function Testimonials() {
       />
 
       {/* Testimonials Grid Section */}
-      <Section>
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => {
-              const imageSrc = getImageOrAvatar(testimonial);
-              return (
-                <SlideUpOnScroll key={index} delay={50 + index * 75}>
-                  <Card className="bg-muted h-full hover:shadow-md transition-shadow">
-                    <CardContent className="pt-6 h-full flex flex-col">
-                      <StarRating rating={testimonial.rating} />
-                      <blockquote className="mt-4 flex flex-col flex-1">
-                        <Text className="italic text-foreground/80">"{testimonial.quote}"</Text>
-                        <footer className="flex items-center gap-3 mt-auto pt-4">
-                          {imageSrc ? (
-                            <img
-                              src={imageSrc}
-                              alt=""
-                              className="w-12 h-12 rounded-full object-cover border-2 border-accent"
-                              loading="lazy"
-                            />
-                          ) : (
-                            <InitialsAvatar
-                              name={testimonial.author}
-                              className="w-12 h-12 text-sm"
-                            />
-                          )}
-                          <div>
-                            <Text as="cite" className="not-italic font-semibold block">
-                              {testimonial.author}
-                            </Text>
-                            <Text size="sm" muted>{t(testimonial.roleKey)}</Text>
-                          </div>
-                        </footer>
-                      </blockquote>
-                    </CardContent>
-                  </Card>
-                </SlideUpOnScroll>
-              );
-            })}
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Parallax Background - Mobile */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center grayscale md:hidden"
+          style={{ backgroundImage: "url('/images/backgrounds/testimonials/testimonials-bg-mobile.webp')" }}
+        />
+        {/* Parallax Background - Desktop */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed grayscale hidden md:block"
+          style={{ backgroundImage: "url('/images/backgrounds/testimonials/testimonials-bg-desktop.webp')" }}
+        />
+        <div className="absolute inset-0 bg-muted/85" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {testimonials.map((testimonial, index) => {
+                const imageSrc = getImageOrAvatar(testimonial);
+                return (
+                  <SlideUpOnScroll key={index} delay={50 + index * 75}>
+                    <Card className="bg-muted h-full hover:shadow-md transition-shadow">
+                      <CardContent className="pt-6 h-full flex flex-col">
+                        <StarRating rating={testimonial.rating} />
+                        <blockquote className="mt-4 flex flex-col flex-1">
+                          <Text className="italic text-foreground/80">"{testimonial.quote}"</Text>
+                          <footer className="flex items-center gap-3 mt-auto pt-4">
+                            {imageSrc ? (
+                              <img
+                                src={imageSrc}
+                                alt=""
+                                className="w-12 h-12 rounded-full object-cover border-2 border-accent"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <InitialsAvatar
+                                name={testimonial.author}
+                                className="w-12 h-12 text-sm"
+                              />
+                            )}
+                            <div>
+                              <Text as="cite" className="not-italic font-semibold block">
+                                {testimonial.author}
+                              </Text>
+                              <Text size="sm" muted>{t(testimonial.roleKey)}</Text>
+                            </div>
+                          </footer>
+                        </blockquote>
+                      </CardContent>
+                    </Card>
+                  </SlideUpOnScroll>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       <CTABanner translationKeyPrefix="testimonials.cta" />
       <Footer />
