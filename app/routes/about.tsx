@@ -1,7 +1,7 @@
 import type { Route } from "./+types/about";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Scales, Column } from "~/components/decorations";
+import { DecorativeElement, Column } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
 import { PageHero } from "~/components/shared/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -10,6 +10,8 @@ import { Link } from "react-router";
 import { useTranslation } from "~/providers/TranslationProvider";
 import { Footer } from "~/components/shared/Footer";
 import { Target, Scale, Trophy, BookOpen, Handshake, Heart, type LucideIcon } from "lucide-react";
+import { JsonLd } from "~/components/seo/JsonLd";
+import { generateBreadcrumbSchema, SITE_URL } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -30,22 +32,26 @@ const valueKeys: { key: string; icon: LucideIcon }[] = [
 const stats = [
   { value: "100+", labelKey: "about.stats.cases" },
   { value: "15+", labelKey: "about.stats.years" },
-  { value: "98%", labelKey: "about.stats.satisfaction" },
+  { value: "5", labelKey: "about.stats.practiceAreas" },
 ];
 
 export default function About() {
   const { t } = useTranslation();
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_URL },
+    { name: "About Our Firm", url: `${SITE_URL}/about` },
+  ];
+
   return (
     <>
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbs)} />
+
       {/* Hero Section */}
       <PageHero
         subtitleKey="about.hero.subtitle"
         titleKey="about.hero.title"
         descriptionKey="about.hero.description"
-        decoratorIcon={<Scales size={100} className="w-[70px] h-[70px] md:w-[100px] md:h-[100px]" />}
-        linesFlipped
-        linesOffset="left-[10%] bottom-[10px]"
       />
 
       {/* Mission Section */}

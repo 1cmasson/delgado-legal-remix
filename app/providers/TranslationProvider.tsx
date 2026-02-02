@@ -8,6 +8,7 @@ type TranslationContextType = {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (key: string) => string;
+  tRaw: <T = unknown>(key: string) => T | undefined;
   isLoading: boolean;
 };
 
@@ -29,6 +30,22 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string {
   }
   
   return typeof value === 'string' ? value : path;
+}
+
+// Helper to get raw nested value (for arrays/objects)
+function getNestedRawValue(obj: Record<string, unknown>, path: string): unknown {
+  const keys = path.split('.');
+  let value: unknown = obj;
+  
+  for (const key of keys) {
+    if (value && typeof value === 'object' && key in value) {
+      value = (value as Record<string, unknown>)[key];
+    } else {
+      return undefined;
+    }
+  }
+  
+  return value;
 }
 
 interface TranslationProviderProps {
@@ -106,8 +123,13 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
     return getNestedValue(translations, key);
   }, [translations]);
 
+  // Raw translation function for arrays/objects
+  const tRaw = useCallback(<T = unknown>(key: string): T | undefined => {
+    return getNestedRawValue(translations, key) as T | undefined;
+  }, [translations]);
+
   return (
-    <TranslationContext.Provider value={{ locale, setLocale, t, isLoading }}>
+    <TranslationContext.Provider value={{ locale, setLocale, t, tRaw, isLoading }}>
       {children}
     </TranslationContext.Provider>
   );

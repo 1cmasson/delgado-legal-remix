@@ -8,12 +8,12 @@ interface DecorativeElementProps {
 }
 
 const positionClasses = {
-  "top-left": "top-0 left-0",
-  "top-right": "top-0 right-0",
-  "bottom-left": "bottom-0 left-0",
-  "bottom-right": "bottom-0 right-0",
-  "center-left": "top-1/2 left-0 -translate-y-1/2",
-  "center-right": "top-1/2 right-0 -translate-y-1/2",
+  "top-left": "top-0 left-[2px] md:left-0",
+  "top-right": "top-0 right-[2px] md:right-0",
+  "bottom-left": "bottom-0 left-[2px] md:left-0",
+  "bottom-right": "bottom-0 right-[2px] md:right-0",
+  "center-left": "top-1/2 left-[2px] md:left-0 -translate-y-1/2",
+  "center-right": "top-1/2 right-[2px] md:right-0 -translate-y-1/2",
 };
 
 export function DecorativeElement({

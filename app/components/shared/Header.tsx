@@ -90,7 +90,7 @@ export function Header({ className }: HeaderProps) {
             </button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px] border-l-4 border-l-[#E4BE72]" showCloseButton={false}>
-            <nav className="flex flex-col gap-4 mt-8" aria-label="Mobile navigation">
+            <nav className="flex flex-col gap-4 mt-20" aria-label="Mobile navigation">
               {navigation.map((item) => (
                 <Link
                   key={item.href}

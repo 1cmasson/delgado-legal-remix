@@ -8,7 +8,8 @@ import { HeartsParticles } from "~/components/effects/HeartsParticles";
 import { FireworksParticles } from "~/components/effects/FireworksParticles";
 import { ConfettiParticles } from "~/components/effects/ConfettiParticles";
 import { HolidayGreetingModal } from "~/components/holiday/HolidayGreetingModal";
-import { DecorativeElement, Column, Lines, ArtDecoCorner } from "~/components/decorations";
+import { DecorativeElement, Lines, ArtDecoCorner } from "~/components/decorations";
+import { CTABanner } from "~/components/shared/CTABanner";
 import { Heading, Text } from "~/components/shared/Typography";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
@@ -303,33 +304,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <Section background="accent-solid" size="compact">
-        <DecorativeElement position="center-left" opacity={0.25}>
-          <Column size={300} color="white" />
-        </DecorativeElement>
-        <DecorativeElement position="center-right" opacity={0.25}>
-          <Column size={300} color="white" />
-        </DecorativeElement>
-        
-        <div className="max-w-3xl mx-auto text-center">
-          <SlideUpOnScroll>
-            <Heading as="h2" size="lg" className="mb-6">
-              {t('home.cta.title')}
-            </Heading>
-          </SlideUpOnScroll>
-          <SlideUpOnScroll delay={100}>
-            <Text className="mb-10 text-accent-foreground/80 text-lg">
-              {t('home.cta.description')}
-            </Text>
-          </SlideUpOnScroll>
-          <SlideUpOnScroll delay={200}>
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/contact">{t('home.cta.button')}</Link>
-            </Button>
-          </SlideUpOnScroll>
-        </div>
-      </Section>
+      <CTABanner translationKeyPrefix="home.cta" />
       <Footer />
     </>
   );

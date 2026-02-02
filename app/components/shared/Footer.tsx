@@ -1,24 +1,24 @@
 import { Link } from 'react-router';
 import { cn } from '~/lib/utils';
+import { useTranslation } from '~/providers/TranslationProvider';
 
 const footerLinks = {
   services: [
-    { name: 'Immigration Law', href: '/practices#immigration' },
-    { name: 'Family Law', href: '/practices#family' },
-    { name: 'Criminal Defense', href: '/practices#criminal' },
-    { name: 'Personal Injury', href: '/practices#injury' },
+    { nameKey: 'practices.areas.realEstate.title', href: '/practices#real-estate' },
+    { nameKey: 'practices.areas.foreclosure.title', href: '/practices#foreclosure' },
+    { nameKey: 'practices.areas.commercial.title', href: '/practices#commercial' },
+    { nameKey: 'practices.areas.estate.title', href: '/practices#estate' },
   ],
   company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Our Attorneys', href: '/attorneys' },
-    { name: 'Testimonials', href: '/testimonials' },
-    { name: 'FAQ', href: '/faq' },
+    { nameKey: 'nav.about', href: '/about' },
+    { nameKey: 'nav.attorneys', href: '/attorneys' },
+    { nameKey: 'nav.testimonials', href: '/testimonials' },
+    { nameKey: 'nav.faq', href: '/faq' },
   ],
   contact: [
-    { name: '(555) 123-4567', href: 'tel:+15551234567' },
-    { name: 'info@delgadolegal.com', href: 'mailto:info@delgadolegal.com' },
-    { name: '123 Main Street, Suite 100', href: '/contact#location' },
-    { name: 'City, State 12345', href: '/contact#location' },
+    { name: '(786) 762-2389', href: 'tel:+17867622389' },
+    { name: 'michael@delgadolegalpa.com', href: 'mailto:michael@delgadolegalpa.com' },
+    { name: 'Miami Lakes, FL', href: '/contact#location' },
   ],
 };
 
@@ -27,6 +27,7 @@ interface FooterProps {
 }
 
 export function Footer({ className }: FooterProps) {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -46,24 +47,23 @@ export function Footer({ className }: FooterProps) {
               />
             </Link>
             <p className="text-sm text-primary-foreground/80 max-w-xs">
-              Dedicated to providing exceptional legal services with integrity, 
-              compassion, and commitment to our clients.
+              {t('footer.tagline')}
             </p>
           </div>
 
           {/* Services Column */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
-              Practice Areas
+              {t('footer.services')}
             </h3>
             <ul className="space-y-3" role="list">
               {footerLinks.services.map((link) => (
-                <li key={link.name}>
+                <li key={link.nameKey}>
                   <Link
                     to={link.href}
                     className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
                   >
-                    {link.name}
+                    {t(link.nameKey)}
                   </Link>
                 </li>
               ))}
@@ -73,16 +73,16 @@ export function Footer({ className }: FooterProps) {
           {/* Company Column */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
-              Company
+              {t('footer.company')}
             </h3>
             <ul className="space-y-3" role="list">
               {footerLinks.company.map((link) => (
-                <li key={link.name}>
+                <li key={link.nameKey}>
                   <Link
                     to={link.href}
                     className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
                   >
-                    {link.name}
+                    {t(link.nameKey)}
                   </Link>
                 </li>
               ))}
@@ -92,7 +92,7 @@ export function Footer({ className }: FooterProps) {
           {/* Contact Column */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">
-              Contact
+              {t('footer.contact')}
             </h3>
             <ul className="space-y-3" role="list">
               {footerLinks.contact.map((link) => (
@@ -113,20 +113,20 @@ export function Footer({ className }: FooterProps) {
         <div className="mt-12 pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-primary-foreground/60">
-              © {currentYear} Delgado Legal. All rights reserved.
+              {t('footer.copyright').replace('{year}', String(currentYear))}
             </p>
             <div className="flex gap-6">
               <Link
                 to="/privacy"
                 className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
               >
-                Privacy Policy
+                {t('footer.privacy')}
               </Link>
               <Link
                 to="/terms"
                 className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
               >
-                Terms of Service
+                {t('footer.terms')}
               </Link>
             </div>
           </div>

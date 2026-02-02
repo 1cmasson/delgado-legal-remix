@@ -1,36 +1,19 @@
-import type { ReactNode } from "react";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll } from "~/components/effects";
-import { DecorativeElement, Lines, ArtDecoCorner } from "~/components/decorations";
+import { DecorativeElement, ArtDecoCorner } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
 import { useTranslation } from "~/providers/TranslationProvider";
-
-type LinesVariant = "diagonal" | "horizontal" | "vertical";
 
 interface PageHeroProps {
   subtitleKey: string;
   titleKey: string;
   descriptionKey: string;
-  decoratorIcon?: ReactNode;
-  decoratorIconOffset?: string;
-  linesVariant?: LinesVariant;
-  linesFlipped?: boolean;
-  linesOffset?: string;
-  linesSize?: number;
-  swapDecoratorPositions?: boolean;
 }
 
 export function PageHero({
   subtitleKey,
   titleKey,
   descriptionKey,
-  decoratorIcon,
-  decoratorIconOffset,
-  linesVariant = "diagonal",
-  linesFlipped = false,
-  linesOffset,
-  linesSize = 200,
-  swapDecoratorPositions = false,
 }: PageHeroProps) {
   const { t } = useTranslation();
 
@@ -40,23 +23,11 @@ export function PageHero({
         <ArtDecoCorner size={100} corner="top-left" color="var(--brand-gold)" />
       </DecorativeElement>
 
-      {decoratorIcon && (
-        <DecorativeElement position={swapDecoratorPositions ? "bottom-left" : "top-right"} opacity={0.55} className={`animate-float-slow ${decoratorIconOffset ?? ""}`}>
-          <div style={{ color: "var(--brand-gold)" }}>{decoratorIcon}</div>
-        </DecorativeElement>
-      )}
-
-      <DecorativeElement position={swapDecoratorPositions ? "top-right" : "bottom-left"} opacity={0.25} className={linesOffset}>
-        <div style={linesFlipped ? { transform: "scaleX(-1)" } : undefined}>
-          <Lines size={linesSize} variant={linesVariant} color="var(--brand-gold)" />
-        </div>
-      </DecorativeElement>
-
       <DecorativeElement position="bottom-right" opacity={0.60}>
         <ArtDecoCorner size={100} corner="bottom-right" color="var(--brand-gold)" />
       </DecorativeElement>
 
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-4xl mx-auto text-center pb-16">
         <SlideUpOnScroll>
           <Text as="span" size="sm" className="text-[var(--brand-gold)] font-semibold uppercase tracking-widest mb-4 block">
             {t(subtitleKey)}
@@ -70,9 +41,11 @@ export function PageHero({
         </SlideUpOnScroll>
 
         <SlideUpOnScroll delay={200}>
-          <Text size="lg" className="max-w-2xl mx-auto text-gray-300">
-            {t(descriptionKey)}
-          </Text>
+          <div className="min-h-[81px] flex items-center justify-center md:min-h-0">
+            <Text size="lg" className="max-w-2xl text-gray-300 line-clamp-3 md:line-clamp-none">
+              {t(descriptionKey)}
+            </Text>
+          </div>
         </SlideUpOnScroll>
       </div>
     </Section>

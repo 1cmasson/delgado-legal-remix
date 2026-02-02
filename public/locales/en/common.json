@@ -76,7 +76,7 @@
     "stats": {
       "cases": "Successful Cases Handled",
       "years": "Years Of Legal Excellence",
-      "satisfaction": "Client Satisfaction Rate"
+      "practiceAreas": "Practice Areas"
     },
     "values": {
       "subtitle": "What We Stand For",
@@ -331,7 +331,65 @@
       "title": "Ready to Work With Us?",
       "description": "Let us help make your real estate transaction smooth and stress-free.",
       "button": "Contact Us Today"
-    }
+    },
+    "items": [
+      {
+        "quote": "Thank you for being the BEST partner any realtor can ask for. You are amazing! Your professionalism and hard work is like no other. You remain in full control of the deal at all times. I can't thank you enough!",
+        "author": "Estrella P.",
+        "roleKey": "testimonials.roles.realtor",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-1.webp"
+      },
+      {
+        "quote": "First time I see an attorney bend over backwards for everyone involved in the transaction. I will keep in mind the way you work. Congratulations!",
+        "author": "Amada C.",
+        "roleKey": "testimonials.roles.realtor",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-3.webp"
+      },
+      {
+        "quote": "Michael, you helped big time. I haven't forgotten about you and what I have these types of sellers will always keep you 1st in line. Thank you kindly.",
+        "author": "Brenda A.",
+        "roleKey": "testimonials.roles.realEstateAgent",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-4.webp"
+      },
+      {
+        "quote": "Just a quick note to say Thank You for all your support during this process… 5 star service!!!",
+        "author": "A.T.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-2.webp"
+      },
+      {
+        "quote": "You are the best!!! Can't thank you enough for everything!",
+        "author": "Gretel M.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-5.webp"
+      },
+      {
+        "quote": "You are professional, thorough, and caring! It was great working with you!",
+        "author": "Aymee F.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-1.webp"
+      },
+      {
+        "quote": "Thank you for making this a quick and painless process. You guys did a great job!",
+        "author": "Carlos R.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-2.webp"
+      },
+      {
+        "quote": "Thank you again for everything. I'm so glad we met years ago and we've been able to work together. So diligently… efficiently… professional, just amazing!",
+        "author": "Katie M.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-3.webp"
+      }
+    ]
   },
   "contact": {
     "metaTitle": "Contact Us | Delgado Legal P.A. - Miami Lakes, FL",

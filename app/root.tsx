@@ -14,8 +14,13 @@ import { ThemeProvider } from "~/providers/ThemeProvider";
 import { TranslationProvider } from "~/providers/TranslationProvider";
 import { Header } from "~/components/shared/Header";
 import { TranslateWidget } from "~/components/shared/TranslateWidget";
-
-const SITE_URL = "https://silly-gaufre-e5b859.netlify.app";
+import { JsonLd } from "~/components/seo/JsonLd";
+import {
+  SITE_URL,
+  generateOrganizationSchema,
+  generateLegalServiceSchema,
+  generateWebsiteSchema,
+} from "~/lib/schema";
 
 export const meta: Route.MetaFunction = () => [
   { title: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
@@ -53,6 +58,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="description" content="Delgado Legal - Trusted legal representation for immigration, family law, criminal defense, and personal injury cases." />
         <Meta />
         <Links />
+        <JsonLd data={generateOrganizationSchema()} />
+        <JsonLd data={generateLegalServiceSchema()} />
+        <JsonLd data={generateWebsiteSchema()} />
       </head>
       <body>
         {children}

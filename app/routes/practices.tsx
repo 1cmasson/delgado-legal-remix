@@ -1,7 +1,8 @@
 import type { Route } from "./+types/practices";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Column, Gavel } from "~/components/decorations";
+import { DecorativeElement } from "~/components/decorations";
+import { CTABanner } from "~/components/shared/CTABanner";
 import { Heading, Text } from "~/components/shared/Typography";
 import { PageHero } from "~/components/shared/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -10,6 +11,8 @@ import { Link } from "react-router";
 import { useTranslation } from "~/providers/TranslationProvider";
 import { Footer } from "~/components/shared/Footer";
 import { Home as HomeIcon, Shield, Building, ClipboardList, ScrollText, type LucideIcon } from "lucide-react";
+import { JsonLd } from "~/components/seo/JsonLd";
+import { generateBreadcrumbSchema, practiceAreas, SITE_URL, businessInfo } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -54,14 +57,39 @@ const practiceAreaKeys: { id: string; key: string; icon: LucideIcon; serviceKeys
 export default function Practices() {
   const { t } = useTranslation();
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_URL },
+    { name: "Practice Areas", url: `${SITE_URL}/practices` },
+  ];
+
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: practiceAreas.map((area, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: area.name,
+        description: area.description,
+        provider: {
+          "@type": "LegalService",
+          name: businessInfo.name,
+        },
+      },
+    })),
+  };
+
   return (
     <>
+      <JsonLd data={servicesSchema} />
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbs)} />
+
       {/* Hero Section */}
       <PageHero
         subtitleKey="practices.hero.subtitle"
         titleKey="practices.hero.title"
         descriptionKey="practices.hero.description"
-        decoratorIcon={<Gavel size={175} />}
       />
 
       {/* Practice Area Sections */}
@@ -120,33 +148,7 @@ export default function Practices() {
         );
       })}
 
-      {/* CTA Section */}
-      <Section background="accent-solid" size="compact">
-        <DecorativeElement position="center-left" opacity={0.25}>
-          <Column size={300} color="white" />
-        </DecorativeElement>
-        <DecorativeElement position="center-right" opacity={0.25}>
-          <Column size={300} color="white" />
-        </DecorativeElement>
-        
-        <div className="max-w-3xl mx-auto text-center">
-          <SlideUpOnScroll>
-            <Heading as="h2" size="lg" className="mb-6">
-              {t('practices.cta.title')}
-            </Heading>
-          </SlideUpOnScroll>
-          <SlideUpOnScroll delay={100}>
-            <Text className="mb-10 text-accent-foreground/80 text-lg">
-              {t('practices.cta.description')}
-            </Text>
-          </SlideUpOnScroll>
-          <SlideUpOnScroll delay={200}>
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/contact">{t('practices.cta.button')}</Link>
-            </Button>
-          </SlideUpOnScroll>
-        </div>
-      </Section>
+      <CTABanner translationKeyPrefix="practices.cta" />
       <Footer />
     </>
   );

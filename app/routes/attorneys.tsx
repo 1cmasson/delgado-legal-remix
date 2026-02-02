@@ -1,13 +1,15 @@
 import type { Route } from "./+types/attorneys";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Scales, Column, Document, Lines, GoldRing, ArtDecoCorner, Gavel } from "~/components/decorations";
+import { DecorativeElement, Scales, Column, Lines, GoldRing, ArtDecoCorner, Gavel } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
 import { PageHero } from "~/components/shared/PageHero";
 import { Button } from "~/components/ui/button";
 import { Link } from "react-router";
 import { useTranslation } from "~/providers/TranslationProvider";
 import { Footer } from "~/components/shared/Footer";
+import { JsonLd } from "~/components/seo/JsonLd";
+import { generateAttorneySchemas, generateBreadcrumbSchema, SITE_URL } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -81,17 +83,25 @@ function SpecializationBadge({ children }: { children: React.ReactNode }) {
 export default function Attorneys() {
   const { t } = useTranslation();
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_URL },
+    { name: "Our Attorneys", url: `${SITE_URL}/attorneys` },
+  ];
+
+  const attorneySchemas = generateAttorneySchemas();
+
   return (
     <>
+      {attorneySchemas.map((schema, index) => (
+        <JsonLd key={index} data={schema} />
+      ))}
+      <JsonLd data={generateBreadcrumbSchema(breadcrumbs)} />
+
       {/* Hero Section */}
       <PageHero
         subtitleKey="attorneys.hero.subtitle"
         titleKey="attorneys.hero.title"
         descriptionKey="attorneys.hero.description"
-        decoratorIcon={<Document size={120} />}
-        decoratorIconOffset="left-16 bottom-8"
-        linesSize={140}
-        swapDecoratorPositions
       />
 
       {/* Vanessa Delgado Section */}
@@ -216,14 +226,19 @@ export default function Attorneys() {
 
       {/* Together Section */}
       <Section id="together">
-        <DecorativeElement position="top-left" opacity={0.55}>
-          <ArtDecoCorner size={90} corner="top-left" color="var(--brand-gold)" />
-        </DecorativeElement>
-        <DecorativeElement position="bottom-left" opacity={0.55} className="animate-float-slow">
+        <DecorativeElement
+          position="top-right"
+          opacity={0.55}
+          className="animate-float-slow mt-4 mr-4 md:mt-6 md:mr-6 lg:mt-8 lg:mr-8"
+        >
           <Gavel size={140} color="var(--brand-gold)" />
         </DecorativeElement>
-        <DecorativeElement position="bottom-right" opacity={0.55}>
-          <ArtDecoCorner size={90} corner="bottom-right" color="var(--brand-gold)" />
+        <DecorativeElement
+          position="bottom-left"
+          opacity={0.55}
+          className="hidden lg:block animate-float-slow mb-4 ml-4 lg:mb-8 lg:ml-8"
+        >
+          <Scales size={140} color="var(--brand-gold)" />
         </DecorativeElement>
 
         <div className="max-w-5xl mx-auto text-center">

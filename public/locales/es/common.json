@@ -76,7 +76,7 @@
     "stats": {
       "cases": "Casos Exitosos Manejados",
       "years": "Años de Excelencia Legal",
-      "satisfaction": "Tasa de Satisfacción del Cliente"
+      "practiceAreas": "Áreas de Práctica"
     },
     "values": {
       "subtitle": "Lo Que Representamos",
@@ -331,7 +331,65 @@
       "title": "¿Listo para Trabajar con Nosotros?",
       "description": "Permítanos ayudar a que su transacción inmobiliaria sea fluida y sin estrés.",
       "button": "Contáctenos Hoy"
-    }
+    },
+    "items": [
+      {
+        "quote": "¡Gracias por ser el MEJOR socio que cualquier agente de bienes raíces puede pedir! ¡Eres increíble! Tu profesionalismo y trabajo duro no tiene igual. Mantienes el control total del negocio en todo momento. ¡No puedo agradecerte lo suficiente!",
+        "author": "Estrella P.",
+        "roleKey": "testimonials.roles.realtor",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-1.webp"
+      },
+      {
+        "quote": "Primera vez que veo a un abogado desvivirse por todos los involucrados en la transacción. Tendré en cuenta la forma en que trabajas. ¡Felicitaciones!",
+        "author": "Amada C.",
+        "roleKey": "testimonials.roles.realtor",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-3.webp"
+      },
+      {
+        "quote": "Michael, ayudaste muchísimo. No me he olvidado de ti y cuando tenga este tipo de vendedores siempre te tendré en primer lugar. Muchas gracias.",
+        "author": "Brenda A.",
+        "roleKey": "testimonials.roles.realEstateAgent",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-4.webp"
+      },
+      {
+        "quote": "Solo una nota rápida para decir Gracias por todo tu apoyo durante este proceso… ¡¡¡Servicio de 5 estrellas!!!",
+        "author": "A.T.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-2.webp"
+      },
+      {
+        "quote": "¡¡¡Eres el mejor!!! ¡No puedo agradecerte lo suficiente por todo!",
+        "author": "Gretel M.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-5.webp"
+      },
+      {
+        "quote": "¡Eres profesional, minucioso y atento! ¡Fue genial trabajar contigo!",
+        "author": "Aymee F.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-1.webp"
+      },
+      {
+        "quote": "Gracias por hacer de este un proceso rápido y sin complicaciones. ¡Hicieron un gran trabajo!",
+        "author": "Carlos R.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-2.webp"
+      },
+      {
+        "quote": "Gracias de nuevo por todo. Estoy muy contenta de habernos conocido hace años y haber podido trabajar juntos. Tan diligente… eficiente… profesional, ¡simplemente increíble!",
+        "author": "Katie M.",
+        "roleKey": "testimonials.roles.buyer",
+        "rating": 5,
+        "image": "/images/testimonials/delgado-customer-3.webp"
+      }
+    ]
   },
   "contact": {
     "metaTitle": "Contáctenos | Delgado Legal P.A. - Miami Lakes, FL",
