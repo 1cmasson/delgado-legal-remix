@@ -9,6 +9,8 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import "@fontsource-variable/playfair-display";
+import "@fontsource-variable/source-sans-3";
 
 import { ThemeProvider } from "~/providers/ThemeProvider";
 import { TranslationProvider } from "~/providers/TranslationProvider";
@@ -37,16 +39,6 @@ export const meta: Route.MetaFunction = () => [
 ];
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap",
-  },
   // Favicons
   { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
