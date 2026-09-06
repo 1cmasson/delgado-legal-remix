@@ -13,7 +13,7 @@ const backgroundClasses = {
   muted: "bg-muted",
   primary: "bg-primary text-primary-foreground",
   accent: "bg-accent/10",
-  "accent-solid": "bg-accent text-accent-foreground",
+  "accent-solid": "bg-silver-gradient text-accent-foreground",
 };
 
 const sizeClasses = {

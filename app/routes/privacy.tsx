@@ -36,7 +36,7 @@ export default function Privacy() {
       <Section>
         <div className="max-w-3xl mx-auto prose prose-slate dark:prose-invert">
           <SlideUpOnScroll>
-            <Heading as="h2" size="sm" className="text-accent">
+            <Heading as="h2" size="sm" className="text-silver-gradient">
               {t('privacy.sections.collection.title')}
             </Heading>
             <Text className="mb-6">
@@ -45,7 +45,7 @@ export default function Privacy() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={100}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('privacy.sections.use.title')}
             </Heading>
             <Text className="mb-6">
@@ -54,7 +54,7 @@ export default function Privacy() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={200}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('privacy.sections.protection.title')}
             </Heading>
             <Text className="mb-6">
@@ -63,7 +63,7 @@ export default function Privacy() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={300}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('privacy.sections.sharing.title')}
             </Heading>
             <Text className="mb-6">
@@ -72,7 +72,7 @@ export default function Privacy() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={400}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('privacy.sections.cookies.title')}
             </Heading>
             <Text className="mb-6">
@@ -81,7 +81,7 @@ export default function Privacy() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={500}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('privacy.sections.rights.title')}
             </Heading>
             <Text className="mb-6">
@@ -90,7 +90,7 @@ export default function Privacy() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={600}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('privacy.sections.changes.title')}
             </Heading>
             <Text className="mb-6">
@@ -99,7 +99,7 @@ export default function Privacy() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={700}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('privacy.sections.contact.title')}
             </Heading>
             <Text className="mb-6">

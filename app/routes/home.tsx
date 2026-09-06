@@ -95,7 +95,7 @@ export default function Home() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10 px-6">
           <SlideUpOnScroll>
-            <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-widest mb-4 block">
+            <Text as="span" size="sm" className="text-silver-gradient font-semibold uppercase tracking-widest mb-4 block">
               {t('home.hero.subtitle')}
             </Text>
           </SlideUpOnScroll>
@@ -114,7 +114,7 @@ export default function Home() {
           
           <SlideUpOnScroll delay={300}>
             <div className="flex flex-row gap-2 sm:gap-4 justify-center">
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+              <Button asChild size="lg" className="bg-silver-gradient text-accent-foreground hover:brightness-110">
                 <Link to="/contact">{t('home.hero.ctaPrimary')}</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
@@ -128,13 +128,13 @@ export default function Home() {
       {/* Practice Areas Section */}
       <Section background="muted" id="practices">
         <DecorativeElement position="top-right" opacity={0.4} className="animate-float">
-          <Gavel size={200} color="var(--brand-gold)" />
+          <Gavel size={200} color="var(--brand-silver)" />
         </DecorativeElement>
         
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <FadeInOnScroll>
-              <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
+              <Text as="span" size="sm" className="text-silver-gradient font-semibold uppercase tracking-wider">
                 {t('home.practices.subtitle')}
               </Text>
             </FadeInOnScroll>
@@ -155,7 +155,7 @@ export default function Home() {
               <SlideUpOnScroll key={area.key} delay={100 + index * 100}>
                 <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full bg-background">
                   <CardHeader>
-                    <area.icon className="w-10 h-10 mb-2 text-accent" aria-hidden="true" />
+                    <area.icon className="w-10 h-10 mb-2 text-silver-gradient" aria-hidden="true" />
                     <CardTitle className="group-hover:text-accent transition-colors">
                       {t(`home.practices.areas.${area.key}.title`)}
                     </CardTitle>
@@ -183,14 +183,14 @@ export default function Home() {
       {/* About Section */}
       <Section id="about">
         <DecorativeElement position="top-left" opacity={0.25} className="animate-float">
-          <Lines size={250} variant="diagonal" color="var(--brand-gold)" />
+          <Lines size={250} variant="diagonal" color="var(--brand-silver)" />
         </DecorativeElement>
         
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <FadeInOnScroll>
-                <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
+                <Text as="span" size="sm" className="text-silver-gradient font-semibold uppercase tracking-wider">
                   {t('home.about.subtitle')}
                 </Text>
               </FadeInOnScroll>
@@ -210,7 +210,7 @@ export default function Home() {
                 </Text>
               </SlideUpOnScroll>
               <SlideUpOnScroll delay={400}>
-                <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button asChild className="bg-silver-gradient text-accent-foreground hover:brightness-110">
                   <Link to="/about">{t('home.about.cta')}</Link>
                 </Button>
               </SlideUpOnScroll>
@@ -248,17 +248,17 @@ export default function Home() {
         <div className="absolute inset-0 bg-muted/85" />
         
         <DecorativeElement position="top-left" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="top-left" color="var(--brand-gold)" />
+          <ArtDecoCorner size={80} corner="top-left" color="var(--brand-silver)" />
         </DecorativeElement>
         <DecorativeElement position="bottom-right" opacity={0.55}>
-          <ArtDecoCorner size={80} corner="bottom-right" color="var(--brand-gold)" />
+          <ArtDecoCorner size={80} corner="bottom-right" color="var(--brand-silver)" />
         </DecorativeElement>
         
         <div className="container mx-auto px-4 py-10 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <FadeInOnScroll>
-              <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
+              <Text as="span" size="sm" className="text-silver-gradient font-semibold uppercase tracking-wider">
                 {t('home.testimonials.subtitle')}
               </Text>
             </FadeInOnScroll>

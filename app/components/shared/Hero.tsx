@@ -70,7 +70,7 @@ export function Hero({
           <Text
             as="span"
             size="sm"
-            className="inline-block mb-4 px-4 py-1.5 rounded-full bg-accent/20 text-accent font-medium uppercase tracking-wider"
+            className="inline-block mb-4 px-4 py-1.5 rounded-full bg-accent/20 text-silver-gradient font-medium uppercase tracking-wider"
           >
             {subtitle}
           </Text>
@@ -108,7 +108,7 @@ export function Hero({
               <Button
                 asChild
                 size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 min-w-[200px]"
+                className="bg-silver-gradient text-accent-foreground hover:brightness-110 min-w-[200px]"
               >
                 <Link to={primaryCta.href}>{primaryCta.label}</Link>
               </Button>

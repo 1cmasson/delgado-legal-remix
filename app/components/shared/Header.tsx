@@ -88,7 +88,7 @@ export function Header({ className }: HeaderProps) {
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen} modal={false}>
           <SheetContent 
             side="right" 
-            className="w-[300px] sm:w-[400px] border-l-4 border-l-[#E4BE72]" 
+            className="w-[300px] sm:w-[400px] border-l-4 border-l-[#C0C0C0]" 
             showCloseButton={false}
             onInteractOutside={(e) => e.preventDefault()}
             onPointerDownOutside={(e) => e.preventDefault()}

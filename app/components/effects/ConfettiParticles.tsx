@@ -1,5 +1,5 @@
 const CONFETTI_COUNT = 30;
-const COLOR_CLASSES = ['confetti-gold', 'confetti-red', 'confetti-teal', 'confetti-blue', 'confetti-green', 'confetti-pink', 'confetti-sky'];
+const COLOR_CLASSES = ['confetti-silver', 'confetti-red', 'confetti-teal', 'confetti-blue', 'confetti-green', 'confetti-pink', 'confetti-sky'];
 
 export function ConfettiParticles() {
   return (

@@ -36,7 +36,7 @@ export default function Terms() {
       <Section>
         <div className="max-w-3xl mx-auto prose prose-slate dark:prose-invert">
           <SlideUpOnScroll>
-            <Heading as="h2" size="sm" className="text-accent">
+            <Heading as="h2" size="sm" className="text-silver-gradient">
               {t('terms.sections.acceptance.title')}
             </Heading>
             <Text className="mb-6">
@@ -45,7 +45,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={100}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.services.title')}
             </Heading>
             <Text className="mb-6">
@@ -54,7 +54,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={200}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.noAttorneyClient.title')}
             </Heading>
             <Text className="mb-6">
@@ -63,7 +63,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={300}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.intellectualProperty.title')}
             </Heading>
             <Text className="mb-6">
@@ -72,7 +72,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={400}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.userConduct.title')}
             </Heading>
             <Text className="mb-6">
@@ -81,7 +81,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={500}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.disclaimer.title')}
             </Heading>
             <Text className="mb-6">
@@ -90,7 +90,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={600}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.limitation.title')}
             </Heading>
             <Text className="mb-6">
@@ -99,7 +99,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={700}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.governing.title')}
             </Heading>
             <Text className="mb-6">
@@ -108,7 +108,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={800}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.changes.title')}
             </Heading>
             <Text className="mb-6">
@@ -117,7 +117,7 @@ export default function Terms() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={900}>
-            <Heading as="h2" size="sm" className="text-accent mt-8">
+            <Heading as="h2" size="sm" className="text-silver-gradient mt-8">
               {t('terms.sections.contact.title')}
             </Heading>
             <Text className="mb-6">

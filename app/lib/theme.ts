@@ -3,7 +3,7 @@ export const theme = {
   colors: {
     brand: {
       navy: '#033A5B',
-      gold: '#E4BE72',
+      silver: '#C0C0C0',
       gray: '#8B8B8B',
     },
     primary: 'var(--primary)',

@@ -20,7 +20,7 @@ const backgroundClasses = {
   default: 'bg-background',
   muted: 'bg-muted',
   primary: 'bg-primary text-primary-foreground',
-  accent: 'bg-accent text-accent-foreground',
+  accent: 'bg-silver-gradient text-accent-foreground',
 };
 
 export function Section({

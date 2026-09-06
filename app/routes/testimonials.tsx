@@ -32,7 +32,7 @@ function StarRating({ rating }: { rating: number }) {
       {[...Array(5)].map((_, i) => (
         <span 
           key={i} 
-          className={i < rating ? "text-accent" : "text-muted"} 
+          className={i < rating ? "text-silver-gradient" : "text-muted"} 
           aria-hidden="true"
         >
           ★

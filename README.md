@@ -72,7 +72,7 @@ The theme uses CSS custom properties for easy customization:
 ```css
 :root {
   --brand-navy: #033A5B;    /* Primary background */
-  --brand-gold: #E4BE72;    /* Accent/hover color */
+  --brand-silver: #C0C0C0;  /* Silver gradient accent color */
   --brand-gray: #8B8B8B;    /* Text secondary */
 }
 ```

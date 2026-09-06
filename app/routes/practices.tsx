@@ -106,7 +106,7 @@ export default function Practices() {
               <div className={`grid lg:grid-cols-2 gap-12 items-center ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                 <div className={!isEven ? 'lg:col-start-2' : ''}>
                   <SlideUpOnScroll>
-                    <area.icon className="w-12 h-12 mb-4 text-accent" aria-hidden="true" />
+                    <area.icon className="w-12 h-12 mb-4 text-silver-gradient" aria-hidden="true" />
                   </SlideUpOnScroll>
                   <SlideUpOnScroll delay={100}>
                     <Heading as="h2" size="md" className="mb-4">
@@ -119,7 +119,7 @@ export default function Practices() {
                     </Text>
                   </SlideUpOnScroll>
                   <SlideUpOnScroll delay={300}>
-                    <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Button asChild className="bg-silver-gradient text-accent-foreground hover:brightness-110">
                       <Link to="/contact">{t('practices.scheduleCta')}</Link>
                     </Button>
                   </SlideUpOnScroll>
@@ -134,7 +134,7 @@ export default function Practices() {
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {area.serviceKeys.map((serviceKey) => (
                           <li key={serviceKey} className="flex items-center gap-2">
-                            <span className="text-accent" aria-hidden="true">✓</span>
+                            <span className="text-silver-gradient" aria-hidden="true">✓</span>
                             <Text size="sm">{t(`practices.areas.${area.key}.services.${serviceKey}`)}</Text>
                           </li>
                         ))}

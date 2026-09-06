@@ -51,7 +51,7 @@ export default function About() {
       {/* Mission Section */}
       <Section className="overflow-hidden">
         <DecorativeElement position="top-right" opacity={0.4} className="top-[45%] lg:top-0">
-          <Document size={160} className="text-accent" animated />
+          <Document size={160} className="text-silver-gradient" animated />
         </DecorativeElement>
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -95,7 +95,7 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <FadeInOnScroll>
-              <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
+              <Text as="span" size="sm" className="text-silver-gradient font-semibold uppercase tracking-wider">
                 {t('about.values.subtitle')}
               </Text>
             </FadeInOnScroll>
@@ -111,7 +111,7 @@ export default function About() {
               <SlideUpOnScroll key={value.key} delay={100 + index * 75}>
                 <Card className="text-center h-full bg-background hover:shadow-md transition-shadow">
                   <CardHeader>
-                    <value.icon className="w-10 h-10 mx-auto mb-2 text-accent" aria-hidden="true" />
+                    <value.icon className="w-10 h-10 mx-auto mb-2 text-silver-gradient" aria-hidden="true" />
                     <CardTitle>{t(`about.values.items.${value.key}.title`)}</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -135,7 +135,7 @@ export default function About() {
         
         <div className="max-w-3xl mx-auto text-center">
           <FadeInOnScroll>
-            <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
+            <Text as="span" size="sm" className="text-silver-gradient font-semibold uppercase tracking-wider">
               {t('about.team.subtitle')}
             </Text>
           </FadeInOnScroll>

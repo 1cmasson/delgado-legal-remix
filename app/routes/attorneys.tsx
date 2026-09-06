@@ -1,7 +1,7 @@
 import type { Route } from "./+types/attorneys";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
-import { DecorativeElement, Scales, Column, Lines, GoldRing, ArtDecoCorner, Gavel } from "~/components/decorations";
+import { DecorativeElement, Scales, Column, Lines, SilverRing, ArtDecoCorner, Gavel } from "~/components/decorations";
 import { Heading, Text } from "~/components/shared/Typography";
 import { PageHero } from "~/components/shared/PageHero";
 import { Button } from "~/components/ui/button";
@@ -42,7 +42,7 @@ const attorneys = {
 function AttorneyImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative w-64 h-64 md:w-72 md:h-72 mx-auto">
-      <GoldRing size={288} className="absolute inset-0 w-full h-full" />
+      <SilverRing size={288} className="absolute inset-0 w-full h-full" />
       <img
         src={src}
         alt={alt}
@@ -74,7 +74,7 @@ function LinkedInLink({ href, label }: { href: string; label: string }) {
 
 function SpecializationBadge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block px-3 py-1 text-xs font-medium bg-accent/10 text-accent rounded-full">
+    <span className="inline-block px-3 py-1 text-xs font-medium bg-accent/10 text-silver-gradient rounded-full">
       {children}
     </span>
   );
@@ -120,7 +120,7 @@ export default function Attorneys() {
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={150}>
-                <Text className="text-accent font-medium mb-4">{t('attorneys.vanessa.role')}</Text>
+                <Text className="text-silver-gradient font-medium mb-4">{t('attorneys.vanessa.role')}</Text>
               </SlideUpOnScroll>
 
               <SlideUpOnScroll delay={200}>
@@ -140,11 +140,11 @@ export default function Attorneys() {
               <SlideUpOnScroll delay={300}>
                 <div className="space-y-2 mb-6">
                   <Text size="sm" className="flex items-center gap-2">
-                    <span className="text-accent">{t('attorneys.labels.education')}:</span>
+                    <span className="text-silver-gradient">{t('attorneys.labels.education')}:</span>
                     {attorneys.vanessa.education} ({attorneys.vanessa.graduationYear})
                   </Text>
                   <Text size="sm" className="flex items-center gap-2">
-                    <span className="text-accent">{t('attorneys.labels.experience')}:</span>
+                    <span className="text-silver-gradient">{t('attorneys.labels.experience')}:</span>
                     {attorneys.vanessa.experience} {t('attorneys.labels.years')}
                   </Text>
                 </div>
@@ -171,13 +171,13 @@ export default function Attorneys() {
 
               <SlideUpOnScroll delay={150}>
                 <div className="flex items-center gap-3 mb-4">
-                  <Text className="text-accent font-medium">{t('attorneys.michael.role')}</Text>
+                  <Text className="text-silver-gradient font-medium">{t('attorneys.michael.role')}</Text>
                   {attorneys.michael.recognition && (
                     <a
                       href={attorneys.michael.recognitionUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-2.5 py-0.5 text-xs font-semibold bg-accent text-accent-foreground rounded hover:bg-accent/80 transition-colors"
+                      className="inline-flex items-center px-2.5 py-0.5 text-xs font-semibold bg-silver-gradient text-accent-foreground rounded hover:brightness-110 transition-colors"
                     >
                       ⭐ {attorneys.michael.recognition}
                     </a>
@@ -202,11 +202,11 @@ export default function Attorneys() {
               <SlideUpOnScroll delay={300}>
                 <div className="space-y-2 mb-6">
                   <Text size="sm" className="flex items-center gap-2">
-                    <span className="text-accent">{t('attorneys.labels.education')}:</span>
+                    <span className="text-silver-gradient">{t('attorneys.labels.education')}:</span>
                     {attorneys.michael.education} ({attorneys.michael.graduationYear})
                   </Text>
                   <Text size="sm" className="flex items-center gap-2">
-                    <span className="text-accent">{t('attorneys.labels.experience')}:</span>
+                    <span className="text-silver-gradient">{t('attorneys.labels.experience')}:</span>
                     {attorneys.michael.experience} {t('attorneys.labels.years')}
                   </Text>
                 </div>
@@ -231,19 +231,19 @@ export default function Attorneys() {
           opacity={0.55}
           className="animate-float-slow mt-4 mr-4 md:mt-6 md:mr-6 lg:mt-8 lg:mr-8"
         >
-          <Scales size={140} color="var(--brand-gold)" />
+          <Scales size={140} color="var(--brand-silver)" />
         </DecorativeElement>
         <DecorativeElement
           position="bottom-left"
           opacity={0.55}
           className="hidden lg:block animate-float-slow mb-4 ml-4 lg:mb-8 lg:ml-8"
         >
-          <Gavel size={140} color="var(--brand-gold)" />
+          <Gavel size={140} color="var(--brand-silver)" />
         </DecorativeElement>
 
         <div className="max-w-5xl mx-auto text-center">
           <FadeInOnScroll>
-            <Text as="span" size="sm" className="text-accent font-semibold uppercase tracking-wider">
+            <Text as="span" size="sm" className="text-silver-gradient font-semibold uppercase tracking-wider">
               {t('attorneys.together.subtitle')}
             </Text>
           </FadeInOnScroll>
@@ -257,7 +257,7 @@ export default function Attorneys() {
           <SlideUpOnScroll delay={200}>
             <div className="flex justify-center items-center gap-8 md:gap-16 mb-10">
               <div className="relative w-32 h-32 md:w-40 md:h-40">
-                <GoldRing size={160} className="absolute inset-0 w-full h-full" />
+                <SilverRing size={160} className="absolute inset-0 w-full h-full" />
                 <img
                   src={attorneys.vanessa.image}
                   alt={t('attorneys.vanessa.name')}
@@ -265,7 +265,7 @@ export default function Attorneys() {
                 />
               </div>
               <div className="relative w-32 h-32 md:w-40 md:h-40">
-                <GoldRing size={160} className="absolute inset-0 w-full h-full" />
+                <SilverRing size={160} className="absolute inset-0 w-full h-full" />
                 <img
                   src={attorneys.michael.image}
                   alt={t('attorneys.michael.name')}
@@ -288,7 +288,7 @@ export default function Attorneys() {
           </SlideUpOnScroll>
 
           <SlideUpOnScroll delay={500}>
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button asChild size="lg" className="bg-silver-gradient text-accent-foreground hover:brightness-110">
               <Link to="/contact">{t('attorneys.together.cta')}</Link>
             </Button>
           </SlideUpOnScroll>

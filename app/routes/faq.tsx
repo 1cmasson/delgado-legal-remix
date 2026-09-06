@@ -64,7 +64,7 @@ export default function FAQ() {
           {faqCategories.map((category, categoryIndex) => (
             <SlideUpOnScroll key={category.key} delay={categoryIndex * 100}>
               <div>
-                <Heading as="h2" size="sm" className="mb-4 text-accent">
+                <Heading as="h2" size="sm" className="mb-4 text-silver-gradient">
                   {t(`faq.categories.${category.key}.title`)}
                 </Heading>
                 <Accordion type="single" collapsible className="w-full">

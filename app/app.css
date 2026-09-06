@@ -63,7 +63,9 @@ body {
   --radius: 0.625rem;
   /* Delgado Legal Brand Colors */
   --brand-navy: #033A5B;
-  --brand-gold: #E4BE72;
+  --brand-silver: #C0C0C0;
+  --brand-silver-light: #E8E8E8;
+  --brand-silver-mid: #D0D0D0;
   --brand-gray: #8B8B8B;
   
   --background: oklch(1 0 0);
@@ -78,12 +80,12 @@ body {
   --secondary-foreground: oklch(0.30 0.05 240);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.60 0 0); /* Gray #8B8B8B */
-  --accent: oklch(0.80 0.10 80); /* Gold #E4BE72 */
+  --accent: oklch(0.83 0.00 0); /* Silver #C0C0C0 */
   --accent-foreground: oklch(0.30 0.05 240);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.80 0.10 80); /* Gold for focus ring */
+  --ring: oklch(0.83 0.00 0); /* Silver for focus ring */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -91,12 +93,12 @@ body {
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.30 0.05 240); /* Navy */
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.80 0.10 80); /* Gold */
+  --sidebar-primary: oklch(0.83 0.00 0); /* Silver */
   --sidebar-primary-foreground: oklch(0.30 0.05 240);
   --sidebar-accent: oklch(0.35 0.04 240);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.40 0.04 240);
-  --sidebar-ring: oklch(0.80 0.10 80);
+  --sidebar-ring: oklch(0.83 0.00 0);
 }
 
 .dark {
@@ -149,6 +151,22 @@ body {
       font-size: 1.125rem;
     }
   }
+}
+
+/* Silver gradient utilities */
+.text-silver-gradient {
+  background: linear-gradient(135deg, #C0C0C0, #E8E8E8 50%, #D0D0D0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-silver-gradient {
+  background: linear-gradient(135deg, #C0C0C0, #E8E8E8 50%, #D0D0D0);
+}
+
+.border-silver-gradient {
+  border-image: linear-gradient(135deg, #C0C0C0, #E8E8E8 50%, #D0D0D0) 1;
 }
 
 /* Decorative element animations */
@@ -327,7 +345,7 @@ body {
 }
 
 /* Confetti colors */
-.confetti-gold { background-color: #ffd700; }
+.confetti-silver { background-color: #C0C0C0; }
 .confetti-red { background-color: #ff6b6b; }
 .confetti-teal { background-color: #4ecdc4; }
 .confetti-blue { background-color: #45b7d1; }

@@ -21,7 +21,7 @@ interface Firework {
   sparks: Spark[];
 }
 
-const COLORS = ['#ff0000', '#ffffff', '#0000ff', '#ffd700', '#ff6b6b', '#4ecdc4'];
+const COLORS = ['#ff0000', '#ffffff', '#0000ff', '#C0C0C0', '#ff6b6b', '#4ecdc4'];
 
 export function FireworksParticles() {
   const [fireworks, setFireworks] = useState<Firework[]>([]);
