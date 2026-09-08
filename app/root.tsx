@@ -64,6 +64,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* A browser restores scroll before React hydrates — iOS Safari does it
+            when it relaunches and reopens tabs — so the cards have to claim
+            manual restoration here, in the head. An effect runs far too late:
+            it only lands at `load`, leaving the whole parse window unguarded. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(location.pathname.startsWith("/card/"))history.scrollRestoration="manual"`,
+          }}
+        />
         <meta name="description" content="Delgado Legal - Trusted legal representation for immigration, family law, criminal defense, and personal injury cases." />
         <Meta />
         <Links />
