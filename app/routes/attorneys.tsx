@@ -1,4 +1,5 @@
 import type { Route } from "./+types/attorneys";
+import { buildMeta } from "~/lib/seo";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 import { DecorativeElement, Scales, Column, Lines, GoldRing, ArtDecoCorner, Gavel } from "~/components/decorations";
@@ -12,10 +13,12 @@ import { JsonLd } from "~/components/seo/JsonLd";
 import { generateAttorneySchemas, generateBreadcrumbSchema, SITE_URL } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Our Attorneys | Delgado Legal P.A." },
-    { name: "description", content: "Meet attorneys Michael and Vanessa Delgado - experienced legal professionals specializing in real estate law, estate planning, and more at Delgado Legal P.A." },
-  ];
+  return buildMeta({
+    title: "Our Attorneys | Delgado Legal P.A.",
+    description:
+      "Meet attorneys Michael and Vanessa Delgado - experienced legal professionals specializing in real estate law, estate planning, and more at Delgado Legal P.A.",
+    path: "/attorneys",
+  });
 }
 
 const attorneys = {

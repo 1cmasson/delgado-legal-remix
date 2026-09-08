@@ -1,4 +1,5 @@
 import type { Route } from "./+types/terms";
+import { buildMeta } from "~/lib/seo";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll } from "~/components/effects";
 import { Heading, Text } from "~/components/shared/Typography";
@@ -9,10 +10,12 @@ import { JsonLd } from "~/components/seo/JsonLd";
 import { generateBreadcrumbSchema, SITE_URL } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Terms of Service | Delgado Legal P.A." },
-    { name: "description", content: "Terms of Service for Delgado Legal P.A. website. Please read these terms carefully before using our website." },
-  ];
+  return buildMeta({
+    title: "Terms of Service | Delgado Legal P.A.",
+    description:
+      "Terms of Service for Delgado Legal P.A. website. Please read these terms carefully before using our website.",
+    path: "/terms",
+  });
 }
 
 export default function Terms() {

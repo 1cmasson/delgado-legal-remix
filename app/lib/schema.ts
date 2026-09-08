@@ -2,6 +2,13 @@
 
 export const SITE_URL = "https://delgadolegalpa.com";
 
+/** Social share cards, rendered by `scripts/generate-og-images.mjs`. All 1200x630. */
+export const OG_IMAGES = {
+  default: "/images/og/default.jpg",
+  michael: "/images/og/michael.jpg",
+  vanessa: "/images/og/vanessa.jpg",
+} as const;
+
 export const businessInfo = {
   name: "Delgado Legal P.A.",
   legalName: "DELGADO LEGAL, P.A.",
@@ -29,8 +36,8 @@ export const businessInfo = {
     "https://www.linkedin.com/in/vanessa-delgado-a4b090a/",
     "https://www.linkedin.com/in/michael-delgado-b9728927/",
   ],
-  logo: `${SITE_URL}/images/logo.png`,
-  image: `${SITE_URL}/og-image.png`,
+  logo: `${SITE_URL}/android-chrome-512x512.png`,
+  image: `${SITE_URL}${OG_IMAGES.default}`,
 };
 
 export const attorneys = [

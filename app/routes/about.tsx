@@ -1,4 +1,5 @@
 import type { Route } from "./+types/about";
+import { buildMeta } from "~/lib/seo";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 import { DecorativeElement, Column, Document } from "~/components/decorations";
@@ -14,10 +15,12 @@ import { JsonLd } from "~/components/seo/JsonLd";
 import { generateBreadcrumbSchema, SITE_URL } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "About Our Firm | Delgado Legal P.A." },
-    { name: "description", content: "Learn about DELGADO LEGAL, P.A. - a full-service law firm in Miami Lakes, FL. Meet our attorneys Michael and Vanessa Delgado." },
-  ];
+  return buildMeta({
+    title: "About Our Firm | Delgado Legal P.A.",
+    description:
+      "Learn about DELGADO LEGAL, P.A. - a full-service law firm in Miami Lakes, FL. Meet our attorneys Michael and Vanessa Delgado.",
+    path: "/about",
+  });
 }
 
 const valueKeys: { key: string; icon: LucideIcon }[] = [

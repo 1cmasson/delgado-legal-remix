@@ -1,18 +1,18 @@
 import type { Route } from "./+types/card.vanessa";
 import { DigitalCard } from "~/components/cards/DigitalCard";
-import { SITE_URL } from "~/lib/schema";
+import { OG_IMAGES } from "~/lib/schema";
+import { buildMeta } from "~/lib/seo";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "Vanessa Delgado | Delgado Legal P.A.";
-  const description =
-    "Vanessa Delgado, Attorney and Partner at Delgado Legal P.A. in Miami Lakes, FL. Call, email, get directions, or save her contact card.";
-  return [
-    { title },
-    { name: "description", content: description },
-    { property: "og:title", content: title },
-    { property: "og:description", content: description },
-    { property: "og:url", content: `${SITE_URL}/card/vanessa` },
-  ];
+  return buildMeta({
+    title: "Vanessa Delgado | Delgado Legal P.A.",
+    description:
+      "Vanessa Delgado, Attorney and Partner at Delgado Legal P.A. in Miami Lakes, FL. Call, email, get directions, or save her contact card.",
+    path: "/card/vanessa",
+    image: OG_IMAGES.vanessa,
+    imageAlt: "Vanessa Delgado, Attorney and Partner at Delgado Legal P.A.",
+    type: "profile",
+  });
 }
 
 export default function VanessaCard() {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/home";
+import { buildMeta } from "~/lib/seo";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 import { SnowParticles } from "~/components/effects/SnowParticles";
@@ -20,10 +21,11 @@ import { Footer } from "~/components/shared/Footer";
 import { Home as HomeIcon, Shield, Building, ClipboardList, type LucideIcon } from "lucide-react";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
-    { name: "description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more." },
-  ];
+  return buildMeta({
+    title: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL",
+    description:
+      "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more.",
+  });
 }
 
 const practiceAreaKeys: { key: string; icon: LucideIcon }[] = [

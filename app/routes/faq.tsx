@@ -1,4 +1,5 @@
 import type { Route } from "./+types/faq";
+import { buildMeta } from "~/lib/seo";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 import { CTABanner } from "~/components/shared/CTABanner";
@@ -13,10 +14,12 @@ import { JsonLd } from "~/components/seo/JsonLd";
 import { generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "FAQ | Delgado Legal P.A. - Real Estate Closing Questions" },
-    { name: "description", content: "Frequently asked questions about real estate closings, estate planning, and our legal services at Delgado Legal P.A. in Miami Lakes, FL." },
-  ];
+  return buildMeta({
+    title: "FAQ | Delgado Legal P.A. - Real Estate Closing Questions",
+    description:
+      "Frequently asked questions about real estate closings, estate planning, and our legal services at Delgado Legal P.A. in Miami Lakes, FL.",
+    path: "/faq",
+  });
 }
 
 const faqCategories = [

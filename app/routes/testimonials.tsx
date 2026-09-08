@@ -1,4 +1,5 @@
 import type { Route } from "./+types/testimonials";
+import { buildMeta } from "~/lib/seo";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 
 import { CTABanner } from "~/components/shared/CTABanner";
@@ -13,10 +14,12 @@ import { useParallax } from "~/hooks/useParallax";
 import { Footer } from "~/components/shared/Footer";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Client Testimonials | Delgado Legal P.A." },
-    { name: "description", content: "Read what our clients say about working with Delgado Legal P.A. Real testimonials from realtors and homebuyers in South Florida." },
-  ];
+  return buildMeta({
+    title: "Client Testimonials | Delgado Legal P.A.",
+    description:
+      "Read what our clients say about working with Delgado Legal P.A. Real testimonials from realtors and homebuyers in South Florida.",
+    path: "/testimonials",
+  });
 }
 
 interface Testimonial {

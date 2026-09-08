@@ -1,4 +1,5 @@
 import type { Route } from "./+types/privacy";
+import { buildMeta } from "~/lib/seo";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll } from "~/components/effects";
 import { Heading, Text } from "~/components/shared/Typography";
@@ -9,10 +10,12 @@ import { JsonLd } from "~/components/seo/JsonLd";
 import { generateBreadcrumbSchema, SITE_URL } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Privacy Policy | Delgado Legal P.A." },
-    { name: "description", content: "Privacy Policy for Delgado Legal P.A. Learn how we collect, use, and protect your personal information." },
-  ];
+  return buildMeta({
+    title: "Privacy Policy | Delgado Legal P.A.",
+    description:
+      "Privacy Policy for Delgado Legal P.A. Learn how we collect, use, and protect your personal information.",
+    path: "/privacy",
+  });
 }
 
 export default function Privacy() {

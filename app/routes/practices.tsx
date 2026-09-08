@@ -1,4 +1,5 @@
 import type { Route } from "./+types/practices";
+import { buildMeta } from "~/lib/seo";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
 import { DecorativeElement } from "~/components/decorations";
@@ -15,10 +16,12 @@ import { JsonLd } from "~/components/seo/JsonLd";
 import { generateBreadcrumbSchema, practiceAreas, SITE_URL, businessInfo } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Practice Areas | Delgado Legal P.A. - Real Estate Law Miami" },
-    { name: "description", content: "Our practice areas: Real Estate Closings, Foreclosure Defense, Commercial Transactions, Estate Planning, and Uncontested Divorces. Serving South Florida." },
-  ];
+  return buildMeta({
+    title: "Practice Areas | Delgado Legal P.A. - Real Estate Law Miami",
+    description:
+      "Our practice areas: Real Estate Closings, Foreclosure Defense, Commercial Transactions, Estate Planning, and Uncontested Divorces. Serving South Florida.",
+    path: "/practices",
+  });
 }
 
 const practiceAreaKeys: { id: string; key: string; icon: LucideIcon; serviceKeys: string[] }[] = [

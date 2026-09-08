@@ -19,25 +19,18 @@ import { Header } from "~/components/shared/Header";
 import { TranslateWidget } from "~/components/shared/TranslateWidget";
 import { JsonLd } from "~/components/seo/JsonLd";
 import {
-  SITE_URL,
   generateOrganizationSchema,
   generateLegalServiceSchema,
   generateWebsiteSchema,
 } from "~/lib/schema";
+import { buildMeta } from "~/lib/seo";
 
-export const meta: Route.MetaFunction = () => [
-  { title: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
-  { name: "description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more." },
-  { property: "og:title", content: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
-  { property: "og:description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more." },
-  { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
-  { property: "og:url", content: SITE_URL },
-  { property: "og:type", content: "website" },
-  { name: "twitter:card", content: "summary_large_image" },
-  { name: "twitter:title", content: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL" },
-  { name: "twitter:description", content: "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL." },
-  { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
-];
+export const meta: Route.MetaFunction = () =>
+  buildMeta({
+    title: "Delgado Legal P.A. | Real Estate Attorney Miami Lakes, FL",
+    description:
+      "DELGADO LEGAL, P.A. is a full-service law firm and licensed title agent in Miami Lakes, FL. Real estate closings, estate planning, foreclosure defense, and more.",
+  });
 
 export const links: Route.LinksFunction = () => [
   // Favicons
@@ -73,7 +66,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
             __html: `if(location.pathname.startsWith("/card/"))history.scrollRestoration="manual"`,
           }}
         />
-        <meta name="description" content="Delgado Legal - Trusted legal representation for immigration, family law, criminal defense, and personal injury cases." />
         <Meta />
         <Links />
         <JsonLd data={generateOrganizationSchema()} />

@@ -1,4 +1,5 @@
 import type { Route } from "./+types/contact";
+import { buildMeta } from "~/lib/seo";
 import { Form, useActionData, useNavigation } from "react-router";
 import { Section } from "~/components/layout";
 import { SlideUpOnScroll, FadeInOnScroll } from "~/components/effects";
@@ -15,10 +16,12 @@ import { JsonLd } from "~/components/seo/JsonLd";
 import { generateBreadcrumbSchema, SITE_URL, businessInfo } from "~/lib/schema";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Contact Us | Delgado Legal P.A. - Miami Lakes, FL" },
-    { name: "description", content: "Contact DELGADO LEGAL, P.A. in Miami Lakes, FL. Call (786) 762-2389 or email michael@delgadolegalpa.com for real estate closings and legal services." },
-  ];
+  return buildMeta({
+    title: "Contact Us | Delgado Legal P.A. - Miami Lakes, FL",
+    description:
+      "Contact DELGADO LEGAL, P.A. in Miami Lakes, FL. Call (786) 762-2389 or email michael@delgadolegalpa.com for real estate closings and legal services.",
+    path: "/contact",
+  });
 }
 
 type ActionData = {

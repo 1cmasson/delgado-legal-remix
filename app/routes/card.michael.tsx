@@ -1,18 +1,18 @@
 import type { Route } from "./+types/card.michael";
 import { DigitalCard } from "~/components/cards/DigitalCard";
-import { SITE_URL } from "~/lib/schema";
+import { OG_IMAGES } from "~/lib/schema";
+import { buildMeta } from "~/lib/seo";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "Michael Delgado | Delgado Legal P.A.";
-  const description =
-    "Michael Delgado, Attorney and Partner at Delgado Legal P.A. in Miami Lakes, FL. Call, email, get directions, or save his contact card.";
-  return [
-    { title },
-    { name: "description", content: description },
-    { property: "og:title", content: title },
-    { property: "og:description", content: description },
-    { property: "og:url", content: `${SITE_URL}/card/michael` },
-  ];
+  return buildMeta({
+    title: "Michael Delgado | Delgado Legal P.A.",
+    description:
+      "Michael Delgado, Attorney and Partner at Delgado Legal P.A. in Miami Lakes, FL. Call, email, get directions, or save his contact card.",
+    path: "/card/michael",
+    image: OG_IMAGES.michael,
+    imageAlt: "Michael Delgado, Attorney and Partner at Delgado Legal P.A.",
+    type: "profile",
+  });
 }
 
 export default function MichaelCard() {
