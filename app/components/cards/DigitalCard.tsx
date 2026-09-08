@@ -95,6 +95,20 @@ export function DigitalCard(props: DigitalCardProps) {
     "shareCard" | "sharing" | "linkCopied" | "copyFailed"
   >("shareCard");
 
+  // A card is handed out by link or QR code, so it always opens on the lockup.
+  // The root keeps <ScrollRestoration /> off these routes; that leaves the
+  // browser's own restoration, which has to be pinned back too — including on
+  // a bfcache restore, where nothing remounts and only `pageshow` fires.
+  useEffect(() => {
+    const toTop = () => {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    };
+    toTop();
+    window.addEventListener("pageshow", toTop);
+    return () => window.removeEventListener("pageshow", toTop);
+  }, []);
+
   // Resolved client-side only: the server has no idea what time it is in Miami
   // relative to the visitor, and rendering a guess would mismatch on hydration.
   useEffect(() => {

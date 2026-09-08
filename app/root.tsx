@@ -49,7 +49,16 @@ export const links: Route.LinksFunction = () => [
   { rel: "manifest", href: "/site.webmanifest" },
 ];
 
+/** The digital business cards are standalone landing pages, on their own route. */
+function useIsStandaloneCard() {
+  return useLocation().pathname.startsWith("/card/");
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  // A card is handed out by link or QR code and has to open on the lockup, so
+  // it opts out of scroll restoration and pins itself to the top instead.
+  const isStandaloneCard = useIsStandaloneCard();
+
   return (
     <html lang="en">
       <head>
@@ -64,7 +73,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-        <ScrollRestoration />
+        {!isStandaloneCard && <ScrollRestoration />}
         <Scripts />
       </body>
     </html>
@@ -72,9 +81,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function AppContent() {
-  // The digital business cards are standalone landing pages: they own the full
-  // viewport and carry their own header, so the site nav would be noise.
-  const isStandaloneCard = useLocation().pathname.startsWith("/card/");
+  // The cards own the full viewport and carry their own header, so the site
+  // nav would be noise.
+  const isStandaloneCard = useIsStandaloneCard();
 
   return (
     <>
